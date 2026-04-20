@@ -1,0 +1,73 @@
+{
+  "_description": "Beers Criteria 2023 rules for potentially inappropriate medication use in older adults (age >= 65). Subset focused on medications relevant to SignalLoop demo scenarios.",
+  "_source": "American Geriatrics Society 2023 Updated AGS Beers Criteria for Potentially Inappropriate Medication Use in Older Adults. J Am Geriatr Soc. 2023;71(7):2052-2077.",
+  "_source_url": "https://agsjournals.onlinelibrary.wiley.com/doi/10.1111/jgs.18372",
+  "_applies_when": "patient age >= 65",
+  "criteria": [
+    {
+      "rule_id": "beers-nsaid-chronic",
+      "drug_class": "NSAID",
+      "recommendation": "avoid",
+      "rationale": "Increases risk of GI bleeding/peptic ulcer disease and acute kidney injury in older adults. Risk further increased with concurrent use of corticosteroids, anticoagulants, or antiplatelet agents.",
+      "quality_of_evidence": "moderate",
+      "strength_of_recommendation": "strong",
+      "severity": "moderate",
+      "exceptions": "Short-term use (< 1 week) may be acceptable with gastroprotection if no renal impairment"
+    },
+    {
+      "rule_id": "beers-ppi-chronic",
+      "drug_class": "PPI",
+      "recommendation": "avoid_beyond_8_weeks_without_indication",
+      "rationale": "Risk of C. difficile infection, bone loss, fractures. Use beyond 8 weeks only with clear indication (erosive esophagitis, Barrett's, pathological hypersecretory conditions).",
+      "quality_of_evidence": "high",
+      "strength_of_recommendation": "strong",
+      "severity": "minor"
+    },
+    {
+      "rule_id": "beers-benzodiazepine",
+      "drug_class": "BENZODIAZEPINE",
+      "recommendation": "avoid",
+      "rationale": "Increased sensitivity in older adults. Increased risk of cognitive impairment, delirium, falls, fractures, motor vehicle crashes.",
+      "quality_of_evidence": "moderate",
+      "strength_of_recommendation": "strong",
+      "severity": "moderate"
+    },
+    {
+      "rule_id": "beers-first-gen-antihistamine",
+      "drug_class": "FIRST_GEN_ANTIHISTAMINE",
+      "recommendation": "avoid",
+      "rationale": "Highly anticholinergic; clearance reduced with advanced age. Risk of confusion, dry mouth, constipation, urinary retention, falls.",
+      "quality_of_evidence": "moderate",
+      "strength_of_recommendation": "strong",
+      "severity": "moderate"
+    },
+    {
+      "rule_id": "beers-muscle-relaxant",
+      "drug_class": "SKELETAL_MUSCLE_RELAXANT",
+      "recommendation": "avoid",
+      "rationale": "Most muscle relaxants poorly tolerated by older adults due to anticholinergic effects, sedation, and risk of falls. Effectiveness at tolerable doses questionable.",
+      "quality_of_evidence": "moderate",
+      "strength_of_recommendation": "strong",
+      "severity": "moderate"
+    },
+    {
+      "rule_id": "beers-tricyclic-antidepressant",
+      "drug_class": "TRICYCLIC_ANTIDEPRESSANT",
+      "recommendation": "avoid",
+      "rationale": "Highly anticholinergic, sedating, and cause orthostatic hypotension. Risk of falls, cardiac conduction abnormalities.",
+      "quality_of_evidence": "high",
+      "strength_of_recommendation": "strong",
+      "severity": "major"
+    },
+    {
+      "rule_id": "beers-sulfonylurea-long-acting",
+      "drug_class": "LONG_ACTING_SULFONYLUREA",
+      "recommendation": "avoid",
+      "rationale": "Glibenclamide (glyburide) — higher risk of severe prolonged hypoglycaemia in older adults due to long half-life and active metabolites.",
+      "quality_of_evidence": "high",
+      "strength_of_recommendation": "strong",
+      "severity": "major",
+      "specific_drugs": ["glibenclamide", "glyburide", "chlorpropamide"]
+    }
+  ]
+}

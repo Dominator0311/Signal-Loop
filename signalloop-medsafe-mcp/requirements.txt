@@ -1,0 +1,21 @@
+# Core MCP + HTTP framework
+fastapi>=0.115.0
+uvicorn>=0.32.0
+mcp>=1.9.0
+
+# HTTP client for FHIR server communication
+httpx>=0.28.0
+
+# JWT decoding for patient ID extraction from FHIR tokens
+PyJWT>=2.10.0
+
+# Data validation and serialization
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+
+# Google Gemini SDK for Phase 1 and Phase 3 LLM calls
+google-genai>=1.0.0
+
+# Testing
+pytest>=8.0.0
+pytest-asyncio>=0.23.0

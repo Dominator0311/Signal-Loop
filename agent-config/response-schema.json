@@ -1,0 +1,218 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SignalLoop Agent Response",
+  "description": "Structured response schema for the SignalLoop Renal Safety Agent. Paste into the Response Format tab in Prompt Opinion.",
+  "type": "object",
+  "properties": {
+    "clinician_brief": {
+      "type": "object",
+      "description": "Concise clinical summary for the treating clinician",
+      "properties": {
+        "what_changed": {
+          "type": "string",
+          "description": "What is new or different since last review"
+        },
+        "why_it_matters": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Key reasons this matters for THIS patient specifically"
+        },
+        "trend_summary": {
+          "type": "string",
+          "description": "Renal function trend in one sentence with numbers"
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "What is unknown or uncertain"
+        }
+      },
+      "required": ["what_changed", "why_it_matters"]
+    },
+    "patient_explanation": {
+      "type": "object",
+      "description": "Plain-language explanation for the patient (released only after clinician approval)",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Patient-facing explanation at 6th-grade reading level"
+        },
+        "requires_approval": {
+          "type": "boolean",
+          "description": "Always true — clinician must approve before patient sees this"
+        }
+      },
+      "required": ["text", "requires_approval"]
+    },
+    "medsafe": {
+      "type": "object",
+      "description": "MedSafe gate output — populated when a medication is proposed",
+      "properties": {
+        "triggered": {
+          "type": "boolean",
+          "description": "Whether MedSafe was invoked this turn"
+        },
+        "proposed_medication": {
+          "type": "string"
+        },
+        "verdict": {
+          "type": "string",
+          "enum": ["clean", "info", "warn", "warn_override_required", "block", "not_triggered"],
+          "description": "Phase 2 deterministic verdict"
+        },
+        "narrative": {
+          "type": "string",
+          "description": "Phase 3 patient-specific narrative (why this matters for THIS patient)"
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "severity": {"type": "string"},
+              "rule_id": {"type": "string"},
+              "reason": {"type": "string"},
+              "citation": {"type": "string"}
+            }
+          },
+          "description": "Safety flags from Phase 2 rules engine"
+        },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "suitability": {"type": "string"},
+              "trade_offs": {"type": "string"},
+              "monitoring": {"type": "string"}
+            }
+          },
+          "description": "Personalised safer alternatives from Phase 3"
+        }
+      },
+      "required": ["triggered"]
+    },
+    "proactive_referral": {
+      "type": "object",
+      "description": "Proactive referral recommendation (surfaced when interpretation warrants it)",
+      "properties": {
+        "indicated": {
+          "type": "boolean"
+        },
+        "specialty": {
+          "type": "string"
+        },
+        "reasoning": {
+          "type": "string"
+        },
+        "guideline_citation": {
+          "type": "string"
+        }
+      },
+      "required": ["indicated"]
+    },
+    "referral_packet": {
+      "type": "object",
+      "description": "Specialty-specific referral packet details (when referral is being assembled)",
+      "properties": {
+        "target_specialty": {
+          "type": "string"
+        },
+        "completeness_score": {
+          "type": "number"
+        },
+        "missing_context_flags": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "candidate_destinations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "site": {"type": "string"},
+              "rank_score": {"type": "number"},
+              "wait_days": {"type": "number"}
+            }
+          }
+        }
+      }
+    },
+    "recommended_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Action type: prescribe, referral, repeat_lab, monitor, educate"
+          },
+          "label": {
+            "type": "string",
+            "description": "Short action label"
+          },
+          "rationale": {
+            "type": "string"
+          },
+          "requires_approval": {
+            "type": "boolean"
+          }
+        },
+        "required": ["type", "label", "requires_approval"]
+      },
+      "description": "Recommended next actions for clinician decision"
+    },
+    "fhir_writes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resource_type": {"type": "string"},
+          "action": {"type": "string"},
+          "id": {"type": "string"},
+          "summary": {"type": "string"}
+        }
+      },
+      "description": "FHIR resources written this turn (for audit visibility)"
+    },
+    "returned_consult": {
+      "type": "object",
+      "description": "Handling of returned specialist notes",
+      "properties": {
+        "source_document": {
+          "type": "string"
+        },
+        "recommendations": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "harmonised_plan": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "reconciliation_notes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": {"type": "string"},
+          "state": {
+            "type": "string",
+            "enum": ["confirmed", "needs_review", "conflict", "missing_important"]
+          },
+          "detail": {"type": "string"}
+        }
+      },
+      "description": "Chart-patient reconciliation flags (4-state taxonomy)"
+    }
+  },
+  "required": ["clinician_brief", "medsafe", "recommended_actions"]
+}

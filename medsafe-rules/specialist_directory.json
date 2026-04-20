@@ -1,0 +1,69 @@
+{
+  "_description": "Hardcoded specialist directory for hackathon demo. In production, this queries a live directory service (NHS Spine, commercial directory API).",
+  "_note": "These are fictional but realistic specialist profiles for the demo.",
+  "nephrology": [
+    {
+      "name": "Dr Anita Patel",
+      "site": "Royal Free Nephrology Clinic",
+      "address": "Pond Street, Hampstead, NW3 2QG",
+      "distance_miles_from_camden": 4.2,
+      "earliest_available_slot_days": 8,
+      "language": ["English", "Hindi", "Gujarati"],
+      "network_status": "in-network",
+      "clinical_focus": "CKD progression, medication optimisation, diabetic nephropathy",
+      "subspecialty_fit_score": 0.9,
+      "accepts_urgent": true,
+      "notes": "Strong match for CKD + diabetes + medication review cases"
+    },
+    {
+      "name": "Dr Marcus Williams",
+      "site": "UCH Renal Services",
+      "address": "235 Euston Road, NW1 2BU",
+      "distance_miles_from_camden": 7.1,
+      "earliest_available_slot_days": 3,
+      "language": ["English"],
+      "network_status": "in-network",
+      "clinical_focus": "General nephrology, acute kidney injury, dialysis access",
+      "subspecialty_fit_score": 0.8,
+      "accepts_urgent": true,
+      "notes": "Fastest availability; broader nephrology but less CKD-medication subspecialty focus"
+    },
+    {
+      "name": "Dr Fatima Okonkwo",
+      "site": "North Thames Kidney Centre",
+      "address": "48 Archway Road, N6 5BB",
+      "distance_miles_from_camden": 12.0,
+      "earliest_available_slot_days": 14,
+      "language": ["English", "Yoruba"],
+      "network_status": "in-network",
+      "clinical_focus": "CKD in diabetes, transplant medicine, proteinuric kidney disease",
+      "subspecialty_fit_score": 0.85,
+      "accepts_urgent": false,
+      "notes": "Strong diabetes-CKD subfocus matches patient profile; longest wait; non-urgent only"
+    }
+  ],
+  "cardiology": [
+    {
+      "name": "Dr Sarah Chen",
+      "site": "Heart Hospital Outpatients",
+      "address": "16-18 Westmoreland Street, W1G 8PH",
+      "distance_miles_from_camden": 5.5,
+      "earliest_available_slot_days": 10,
+      "language": ["English", "Mandarin"],
+      "network_status": "in-network",
+      "clinical_focus": "Heart failure, hypertension, cardiorenal syndrome"
+    }
+  ],
+  "rheumatology": [
+    {
+      "name": "Dr S Patel",
+      "site": "Rheumatology Clinic, UCLH",
+      "address": "235 Euston Road, NW1 2BU",
+      "distance_miles_from_camden": 7.1,
+      "earliest_available_slot_days": 12,
+      "language": ["English"],
+      "network_status": "in-network",
+      "clinical_focus": "Inflammatory arthritis, biologic therapy, RA management"
+    }
+  ]
+}

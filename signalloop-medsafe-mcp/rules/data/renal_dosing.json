@@ -1,0 +1,66 @@
+{
+  "_description": "Renal dosing thresholds for medications requiring adjustment or avoidance based on eGFR. Used in Phase 2 deterministic checks.",
+  "_source": "BNF renal appendix, individual drug SPCs, NICE NG203",
+  "thresholds": [
+    {
+      "drug_class": "NSAID",
+      "rules": [
+        {"egfr_below": 60, "action": "avoid", "severity": "contraindicated", "citation": "NICE NG203 §1.3.2"},
+        {"egfr_below": 90, "egfr_above": 60, "action": "caution_short_course_only", "severity": "minor", "citation": "BNF — use with caution"}
+      ]
+    },
+    {
+      "drug_class": "BIGUANIDE",
+      "specific_drug": "metformin",
+      "rules": [
+        {"egfr_below": 30, "action": "stop", "severity": "contraindicated", "citation": "NICE NG28 §1.6.1"},
+        {"egfr_below": 45, "action": "dose_reduce_max_1g_daily", "severity": "moderate", "citation": "NICE NG28 §1.6.1"},
+        {"egfr_below": 60, "action": "monitor_3_monthly", "severity": "minor", "citation": "BNF"}
+      ]
+    },
+    {
+      "drug_class": "GABAPENTINOID",
+      "specific_drug": "gabapentin",
+      "rules": [
+        {"egfr_below": 15, "action": "max_300mg_daily", "severity": "major", "citation": "BNF — gabapentin dose in renal impairment"},
+        {"egfr_below": 30, "action": "max_600mg_daily", "severity": "moderate", "citation": "BNF"},
+        {"egfr_below": 50, "action": "max_900mg_daily", "severity": "moderate", "citation": "BNF"},
+        {"egfr_below": 80, "action": "max_1800mg_daily", "severity": "minor", "citation": "BNF"}
+      ]
+    },
+    {
+      "drug_class": "GABAPENTINOID",
+      "specific_drug": "pregabalin",
+      "rules": [
+        {"egfr_below": 15, "action": "max_75mg_daily", "severity": "major", "citation": "BNF — pregabalin dose in renal impairment"},
+        {"egfr_below": 30, "action": "max_150mg_daily", "severity": "moderate", "citation": "BNF"},
+        {"egfr_below": 60, "action": "max_300mg_daily", "severity": "moderate", "citation": "BNF"}
+      ]
+    },
+    {
+      "drug_class": "ACE_INHIBITOR",
+      "notes": "ACE-I dose adjustment varies by specific drug. General principle: start low, titrate slowly in CKD.",
+      "rules": [
+        {"egfr_below": 30, "action": "start_low_dose_monitor_closely", "severity": "moderate", "citation": "BNF — reduce initial dose in renal impairment"},
+        {"egfr_below": 10, "action": "specialist_supervision_only", "severity": "major", "citation": "BNF"}
+      ]
+    },
+    {
+      "drug_class": "SGLT2_INHIBITOR",
+      "specific_drug": "dapagliflozin",
+      "rules": [
+        {"egfr_below": 25, "action": "do_not_initiate", "severity": "major", "citation": "NICE NG203 §1.3.16 — initiate if eGFR ≥25"},
+        {"egfr_below": 15, "action": "discontinue", "severity": "contraindicated", "citation": "BNF"}
+      ],
+      "notes": "Dapagliflozin for renoprotection can be continued below eGFR 25 if already started, but do not initiate below 25."
+    },
+    {
+      "drug_class": "MOOD_STABILISER",
+      "specific_drug": "lithium",
+      "rules": [
+        {"egfr_below": 60, "action": "reduce_dose_monitor_levels_frequently", "severity": "major", "citation": "BNF — reduce dose; monitor serum lithium more frequently"},
+        {"egfr_below": 30, "action": "avoid_or_specialist_only", "severity": "contraindicated", "citation": "NICE CG185; BNF"}
+      ]
+    }
+  ]
+}

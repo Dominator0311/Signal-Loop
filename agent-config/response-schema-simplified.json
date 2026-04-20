@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SignalLoop Response (Simplified)",
+  "description": "Fallback schema if Gemini cannot handle the full nested version. Use this if the full schema causes validation failures.",
+  "type": "object",
+  "properties": {
+    "summary": {
+      "type": "string",
+      "description": "One-sentence summary of this response"
+    },
+    "clinician_brief": {
+      "type": "string",
+      "description": "Clinical summary: what changed, why it matters, trend, uncertainties"
+    },
+    "patient_explanation": {
+      "type": "string",
+      "description": "Plain-language patient explanation (requires clinician approval before showing)"
+    },
+    "medsafe_triggered": {
+      "type": "boolean",
+      "description": "Whether MedSafe was invoked"
+    },
+    "medsafe_verdict": {
+      "type": "string",
+      "description": "Safety verdict: clean, warn, warn_override_required, block, or not_triggered"
+    },
+    "medsafe_narrative": {
+      "type": "string",
+      "description": "Patient-specific safety narrative from Phase 3"
+    },
+    "medsafe_alternatives": {
+      "type": "string",
+      "description": "Personalised alternatives with trade-offs (formatted text)"
+    },
+    "referral_indicated": {
+      "type": "boolean",
+      "description": "Whether a specialist referral is recommended"
+    },
+    "referral_details": {
+      "type": "string",
+      "description": "Referral reasoning, packet status, missing context"
+    },
+    "recommended_actions": {
+      "type": "string",
+      "description": "Comma-separated list of recommended next actions"
+    },
+    "fhir_writes_this_turn": {
+      "type": "string",
+      "description": "Resources written to FHIR this turn (type and ID)"
+    },
+    "reconciliation_conflicts": {
+      "type": "string",
+      "description": "Any chart-patient conflicts detected (field: state)"
+    }
+  },
+  "required": ["summary", "clinician_brief", "medsafe_triggered"]
+}

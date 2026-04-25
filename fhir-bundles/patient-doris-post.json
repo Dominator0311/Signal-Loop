@@ -1,0 +1,358 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "name": [
+          {
+            "use": "official",
+            "family": "Williams",
+            "given": [
+              "Doris"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1958-11-03",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "8 Highgate Hill"
+            ],
+            "city": "Haringey",
+            "postalCode": "N19 5NE",
+            "country": "GB"
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Patient"
+      },
+      "fullUrl": "urn:uuid:17fd9495-0800-551f-a967-981cdc0e3864"
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "69896004",
+              "display": "Rheumatoid arthritis"
+            }
+          ],
+          "text": "Rheumatoid arthritis (severe, seropositive)"
+        },
+        "subject": {
+          "reference": "urn:uuid:17fd9495-0800-551f-a967-981cdc0e3864"
+        },
+        "onsetDateTime": "2014-03-01",
+        "note": [
+          {
+            "text": "Severe seropositive RA. Under rheumatology. Managed with methotrexate. Currently in flare."
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Condition"
+      },
+      "fullUrl": "urn:uuid:b36863e9-a574-52ed-ad73-0482ee0cfd9d"
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "64859006",
+              "display": "Osteoporosis"
+            }
+          ],
+          "text": "Osteoporosis"
+        },
+        "subject": {
+          "reference": "urn:uuid:17fd9495-0800-551f-a967-981cdc0e3864"
+        },
+        "onsetDateTime": "2020-09-01"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Condition"
+      },
+      "fullUrl": "urn:uuid:35223742-7cce-5cd4-9625-ae51bbf12c98"
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://dmd.nhs.uk",
+              "code": "326653007",
+              "display": "Methotrexate 10mg tablets"
+            }
+          ],
+          "text": "Methotrexate 10mg tablets"
+        },
+        "subject": {
+          "reference": "urn:uuid:17fd9495-0800-551f-a967-981cdc0e3864"
+        },
+        "authoredOn": "2014-06-01",
+        "dosageInstruction": [
+          {
+            "text": "Take 15mg (1.5 tablets) ONCE WEEKLY on Monday",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "wk",
+                "dayOfWeek": [
+                  "mon"
+                ]
+              }
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 15,
+                  "unit": "mg"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "MedicationRequest"
+      },
+      "fullUrl": "urn:uuid:27944c74-c6c3-54ca-8c57-93989897b1f2"
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://dmd.nhs.uk",
+              "code": "36027411000001100",
+              "display": "Folic acid 5mg tablets"
+            }
+          ],
+          "text": "Folic acid 5mg tablets"
+        },
+        "subject": {
+          "reference": "urn:uuid:17fd9495-0800-551f-a967-981cdc0e3864"
+        },
+        "authoredOn": "2014-06-01",
+        "dosageInstruction": [
+          {
+            "text": "Take ONE tablet daily EXCEPT on methotrexate day (Monday)"
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "MedicationRequest"
+      },
+      "fullUrl": "urn:uuid:10b664d0-847d-5f68-89d7-4623ff2858c4"
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://dmd.nhs.uk",
+              "code": "320270006",
+              "display": "Alendronic acid 70mg tablets"
+            }
+          ],
+          "text": "Alendronic acid 70mg tablets"
+        },
+        "subject": {
+          "reference": "urn:uuid:17fd9495-0800-551f-a967-981cdc0e3864"
+        },
+        "authoredOn": "2020-10-01",
+        "dosageInstruction": [
+          {
+            "text": "Take ONE tablet ONCE weekly on Wednesday morning, 30 minutes before food, with a full glass of water. Remain upright for 30 minutes."
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "MedicationRequest"
+      },
+      "fullUrl": "urn:uuid:db3102cf-7738-58c0-a3eb-bcf338f1d719"
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "62238-1",
+              "display": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (CKD-EPI)"
+            }
+          ],
+          "text": "eGFR (CKD-EPI)"
+        },
+        "subject": {
+          "reference": "urn:uuid:17fd9495-0800-551f-a967-981cdc0e3864"
+        },
+        "effectiveDateTime": "2026-03-15",
+        "valueQuantity": {
+          "value": 65,
+          "unit": "mL/min/1.73m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/{1.73_m2}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "fullUrl": "urn:uuid:686c59dd-8538-5233-b753-f0d3728548f5"
+    },
+    {
+      "resource": {
+        "resourceType": "DocumentReference",
+        "status": "current",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34133-9",
+              "display": "Summarization of episode note"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:17fd9495-0800-551f-a967-981cdc0e3864"
+        },
+        "date": "2026-04-10",
+        "description": "Rheumatology clinic letter - RA flare management",
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "UmhldW1hdG9sb2d5IENsaW5pYyBMZXR0ZXIKRHIgUyBQYXRlbCwgQ29uc3VsdGFudCBSaGV1bWF0b2xvZ2lzdApEYXRlOiAyMDI2LTA0LTEwCgpSZTogRG9yaXMgV2lsbGlhbXMgKERPQjogMDMvMTEvMTk1OCkKCkRlYXIgRHIgUGF0ZWwsCgpUaGFuayB5b3UgZm9yIHJlZmVycmluZyBEb3JpcyB3aG8gSSByZXZpZXdlZCB0b2RheSBpbiBjbGluaWMuIFNoZSBpcyBleHBlcmllbmNpbmcgYSBzaWduaWZpY2FudCBSQSBmbGFyZSB3aXRoIGFjdGl2ZSBzeW5vdml0aXMgaW4gYm90aCB3cmlzdHMgYW5kIE1DUCBqb2ludHMgYmlsYXRlcmFsbHkuIERBUzI4LUNSUDogNS4yIChoaWdoIGRpc2Vhc2UgYWN0aXZpdHkpLgoKUGxhbjoKMS4gU2hvcnQtY291cnNlIE5TQUlEIGZvciBmbGFyZSBtYW5hZ2VtZW50OiBJIGhhdmUgcmVjb21tZW5kZWQgbmFwcm94ZW4gNTAwbWcgQkQgZm9yIDcgZGF5cyB3aXRoIGxhbnNvcHJhem9sZSBjb3Zlci4gSSBub3RlIGhlciBlR0ZSIGlzIDY1IC0gcGxlYXNlIG1vbml0b3IgcmVuYWwgZnVuY3Rpb24gYWZ0ZXIgdGhlIGNvdXJzZS4KMi4gSW5jcmVhc2UgbWV0aG90cmV4YXRlIHRvIDIwbWcgd2Vla2x5IGZyb20gbmV4dCBNb25kYXkuCjMuIFJldmlldyBpbiA2IHdlZWtzIGluIG15IGNsaW5pYy4KCllvdXJzIHNpbmNlcmVseSwKRHIgUyBQYXRlbA=="
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "DocumentReference"
+      },
+      "fullUrl": "urn:uuid:ed9e274d-ecb4-569d-9a64-558a07552834"
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "status": "in-progress",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "subject": {
+          "reference": "urn:uuid:17fd9495-0800-551f-a967-981cdc0e3864"
+        },
+        "period": {
+          "start": "2026-04-20T14:00:00Z"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "69896004",
+                "display": "Rheumatoid arthritis"
+              }
+            ],
+            "text": "RA flare management - actioning rheumatology recommendations"
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Encounter"
+      },
+      "fullUrl": "urn:uuid:f46b4c0c-3ebb-5846-936f-1c073c11dbcb"
+    }
+  ]
+}

@@ -1,0 +1,739 @@
+{
+  "_description": "Pairwise drug-drug interactions for CheckDrugDrugInteraction. Each pair is class-vs-class (or specific drug vs class) with severity, mechanism, and clinical action. Curated subset of the most clinically significant interactions from BNF Appendix 1.",
+  "_source": "British National Formulary (BNF), Appendix 1 \u2014 interactions. https://bnf.nice.org.uk/interactions/",
+  "pairs": [
+    {
+      "id": "DDI-NSAID-ACEI",
+      "drug_a": {
+        "class": "NSAID"
+      },
+      "drug_b": {
+        "class": "ACE_INHIBITOR"
+      },
+      "severity": "moderate",
+      "mechanism": "NSAIDs antagonise the antihypertensive effect of ACE inhibitors and synergistically reduce GFR (renal afferent vasoconstriction + efferent vasodilation), increasing risk of acute kidney injury, particularly with concomitant diuretic.",
+      "action": "Avoid combination if possible. If unavoidable, monitor renal function and U&Es weekly during initiation.",
+      "citation": "BNF Appendix 1 \u2014 NSAIDs / ACE inhibitors interaction",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-NSAID-ARB",
+      "drug_a": {
+        "class": "NSAID"
+      },
+      "drug_b": {
+        "class": "ARB"
+      },
+      "severity": "moderate",
+      "mechanism": "Same mechanism as NSAID + ACE-I \u2014 antagonism of antihypertensive effect and increased AKI risk.",
+      "action": "Avoid; monitor renal function if combination unavoidable.",
+      "citation": "BNF Appendix 1 \u2014 NSAIDs / ARBs interaction",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-NSAID-DIURETIC",
+      "drug_a": {
+        "class": "NSAID"
+      },
+      "drug_b": {
+        "class": "DIURETIC"
+      },
+      "severity": "moderate",
+      "mechanism": "NSAIDs blunt the natriuretic effect of loop and thiazide diuretics and synergistically reduce renal perfusion.",
+      "action": "Avoid combination if possible. Monitor renal function and fluid status if used together. Note: when combined with an ACE-I or ARB the triad is the 'triple-whammy' (see DDI-NSAID-DIURETIC-ACEI), upgraded to severe.",
+      "citation": "BNF Appendix 1 \u2014 NSAIDs / loop diuretics interaction",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-NSAID-DIURETIC-ACEI",
+      "_note": "TRIPLE-DRUG rule \u2014 fires only when an NSAID, a diuretic, AND an ACE-I/ARB are ALL on the active list. Evaluator must respect requires_all_classes.",
+      "drug_a": {
+        "class": "NSAID"
+      },
+      "drug_b": {
+        "class": "DIURETIC"
+      },
+      "requires_all_classes": [
+        "NSAID",
+        "DIURETIC",
+        "ACE_INHIBITOR|ARB"
+      ],
+      "severity": "severe",
+      "mechanism": "Triple-whammy: NSAID + diuretic + ACE-I/ARB markedly increases risk of acute kidney injury, especially in older adults or with CKD. Cumulative renal hit (volume depletion, blocked compensatory vasoconstriction, blunted prostaglandin-mediated perfusion).",
+      "action": "Avoid combination. If absolutely necessary, monitor renal function within 72 hours of initiation and weekly thereafter.",
+      "citation": "BNF Appendix 1 / NICE NG203; Lapi F et al. BMJ 2013;346:e8525",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-NSAID-WARFARIN",
+      "drug_a": {
+        "class": "NSAID"
+      },
+      "drug_b": {
+        "class": "VITAMIN_K_ANTAGONIST"
+      },
+      "severity": "severe",
+      "mechanism": "NSAIDs increase bleeding risk via platelet inhibition and gastric mucosal damage; some NSAIDs also displace warfarin from protein binding raising INR.",
+      "action": "Avoid combination. If unavoidable, gastroprotection (PPI), close INR monitoring.",
+      "citation": "BNF Appendix 1 \u2014 NSAIDs / coumarins interaction",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-NSAID-DOAC",
+      "drug_a": {
+        "class": "NSAID"
+      },
+      "drug_b": {
+        "class": "DOAC"
+      },
+      "severity": "severe",
+      "mechanism": "Additive bleeding risk (especially GI). NSAIDs increase risk of GI ulceration; DOACs reduce clotting.",
+      "action": "Avoid combination. Use paracetamol where possible; if NSAID essential, gastroprotection and short course only.",
+      "citation": "BNF Appendix 1 \u2014 NSAIDs / direct-acting oral anticoagulants",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-NSAID-METHOTREXATE",
+      "drug_a": {
+        "class": "NSAID"
+      },
+      "drug_b": {
+        "specific": "methotrexate"
+      },
+      "severity": "severe",
+      "mechanism": "NSAIDs reduce renal clearance of methotrexate, raising serum levels and risk of bone marrow suppression and mucositis. Risk highest with high-dose methotrexate.",
+      "action": "Caution with low-dose weekly methotrexate; counsel patient to monitor for mouth ulcers, infection, bruising. Avoid with high-dose oncology methotrexate.",
+      "citation": "BNF Appendix 1 \u2014 NSAIDs / methotrexate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-NSAID-LITHIUM",
+      "drug_a": {
+        "class": "NSAID"
+      },
+      "drug_b": {
+        "specific": "lithium"
+      },
+      "severity": "severe",
+      "mechanism": "NSAIDs reduce renal clearance of lithium; serum lithium can rise rapidly into toxic range.",
+      "action": "Avoid combination. If unavoidable, check lithium level within 5 days of starting NSAID and weekly thereafter.",
+      "citation": "BNF Appendix 1 \u2014 NSAIDs / lithium",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-NSAID-SSRI",
+      "drug_a": {
+        "class": "NSAID"
+      },
+      "drug_b": {
+        "class": "SSRI"
+      },
+      "severity": "moderate",
+      "mechanism": "Additive GI bleeding risk (SSRIs reduce platelet serotonin, NSAIDs damage gastric mucosa).",
+      "action": "Co-prescribe PPI gastroprotection; consider paracetamol alternative.",
+      "citation": "BNF Appendix 1 \u2014 NSAIDs / SSRIs",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-WARFARIN-MACROLIDE",
+      "drug_a": {
+        "class": "VITAMIN_K_ANTAGONIST"
+      },
+      "drug_b": {
+        "class": "MACROLIDE"
+      },
+      "severity": "severe",
+      "mechanism": "Macrolides (especially clarithromycin, erythromycin) inhibit CYP3A4 and gut flora producing vitamin K, raising INR.",
+      "action": "Check INR within 3-5 days of starting macrolide; reduce warfarin dose proactively or use azithromycin if appropriate.",
+      "citation": "BNF Appendix 1 \u2014 coumarins / macrolides",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-WARFARIN-FLUCONAZOLE",
+      "drug_a": {
+        "class": "VITAMIN_K_ANTAGONIST"
+      },
+      "drug_b": {
+        "specific": "fluconazole"
+      },
+      "severity": "severe",
+      "mechanism": "Fluconazole inhibits CYP2C9 and CYP3A4, markedly increasing warfarin exposure and INR.",
+      "action": "Check INR within 3-5 days; reduce warfarin dose proactively (often 25-50% reduction).",
+      "citation": "BNF Appendix 1 \u2014 coumarins / fluconazole",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-WARFARIN-AMIODARONE",
+      "drug_a": {
+        "class": "VITAMIN_K_ANTAGONIST"
+      },
+      "drug_b": {
+        "specific": "amiodarone"
+      },
+      "severity": "severe",
+      "mechanism": "Amiodarone inhibits CYP2C9 and CYP3A4. Effect builds over weeks due to long amiodarone half-life.",
+      "action": "Reduce warfarin dose by approximately 25-50% on initiation of amiodarone; check INR weekly for 6 weeks.",
+      "citation": "BNF Appendix 1 \u2014 coumarins / amiodarone",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-STATIN-MACROLIDE",
+      "drug_a": {
+        "class": "STATIN",
+        "specific_drugs_in_a": [
+          "simvastatin",
+          "atorvastatin",
+          "lovastatin"
+        ]
+      },
+      "drug_b": {
+        "class": "MACROLIDE",
+        "specific_drugs_in_b": [
+          "clarithromycin",
+          "erythromycin"
+        ]
+      },
+      "severity": "severe",
+      "mechanism": "Clarithromycin and erythromycin inhibit CYP3A4, markedly raising simvastatin/atorvastatin levels and risk of myopathy and rhabdomyolysis.",
+      "action": "Withhold simvastatin/atorvastatin during macrolide course (or use azithromycin which is less inhibitory).",
+      "citation": "BNF Appendix 1 \u2014 statins / macrolides; MHRA Drug Safety Update",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-STATIN-FIBRATE",
+      "drug_a": {
+        "class": "STATIN"
+      },
+      "drug_b": {
+        "class": "FIBRATE"
+      },
+      "severity": "moderate",
+      "mechanism": "Additive risk of myopathy and rhabdomyolysis (especially with gemfibrozil).",
+      "action": "Avoid gemfibrozil + statin. Fenofibrate + statin acceptable with patient counselling on muscle symptoms.",
+      "citation": "BNF Appendix 1 \u2014 statins / fibrates",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-STATIN-DILTIAZEM-VERAPAMIL",
+      "drug_a": {
+        "class": "STATIN",
+        "specific_drugs_in_a": [
+          "simvastatin",
+          "atorvastatin"
+        ]
+      },
+      "drug_b": {
+        "class": "CCB_NON_DIHYDROPYRIDINE",
+        "specific_drugs_in_b": [
+          "diltiazem",
+          "verapamil"
+        ]
+      },
+      "severity": "moderate",
+      "mechanism": "Diltiazem/verapamil inhibit CYP3A4 raising statin levels and myopathy risk.",
+      "action": "Limit simvastatin to 20mg daily; consider switching to pravastatin or rosuvastatin (not CYP3A4 metabolised).",
+      "citation": "BNF Appendix 1 \u2014 statins / diltiazem / verapamil",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-STATIN-GRAPEFRUIT",
+      "drug_a": {
+        "class": "STATIN",
+        "specific_drugs_in_a": [
+          "simvastatin",
+          "atorvastatin",
+          "lovastatin"
+        ]
+      },
+      "drug_b": {
+        "specific": "grapefruit_juice"
+      },
+      "severity": "moderate",
+      "mechanism": "Grapefruit inhibits intestinal CYP3A4 increasing AUC of simvastatin/atorvastatin and myopathy risk.",
+      "action": "Counsel patient to avoid grapefruit juice while on simvastatin/atorvastatin; pravastatin/rosuvastatin not affected.",
+      "citation": "BNF Appendix 1 \u2014 statins / grapefruit",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-DIGOXIN-AMIODARONE",
+      "drug_a": {
+        "specific": "digoxin"
+      },
+      "drug_b": {
+        "specific": "amiodarone"
+      },
+      "severity": "severe",
+      "mechanism": "Amiodarone inhibits P-glycoprotein, reducing digoxin clearance; serum digoxin can roughly double.",
+      "action": "Halve digoxin dose on amiodarone initiation; check digoxin level 7 days later.",
+      "citation": "BNF Appendix 1 \u2014 digoxin / amiodarone",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-DIGOXIN-VERAPAMIL",
+      "drug_a": {
+        "specific": "digoxin"
+      },
+      "drug_b": {
+        "specific": "verapamil"
+      },
+      "severity": "severe",
+      "mechanism": "Verapamil inhibits P-glycoprotein and reduces renal digoxin clearance; risk of toxicity.",
+      "action": "Reduce digoxin dose by 25-50% on verapamil initiation; monitor levels.",
+      "citation": "BNF Appendix 1 \u2014 digoxin / verapamil",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-DIGOXIN-LOOP-DIURETIC",
+      "drug_a": {
+        "specific": "digoxin"
+      },
+      "drug_b": {
+        "class": "LOOP_DIURETIC"
+      },
+      "severity": "moderate",
+      "mechanism": "Loop diuretic-induced hypokalaemia/hypomagnesaemia potentiates digoxin toxicity.",
+      "action": "Monitor K+ and Mg2+; replace deficits.",
+      "citation": "BNF Appendix 1 \u2014 digoxin / loop diuretics",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-ACEI-K-SPARING",
+      "drug_a": {
+        "class": "ACE_INHIBITOR"
+      },
+      "drug_b": {
+        "class": "MRA"
+      },
+      "severity": "severe",
+      "mechanism": "Both raise serum K+ \u2014 additive risk of hyperkalaemia, particularly with CKD or in older adults.",
+      "action": "Check K+ within 1 week of starting/titrating; clinically appropriate combination in HFrEF but requires monitoring.",
+      "citation": "BNF Appendix 1 \u2014 ACE inhibitors / aldosterone antagonists; NICE NG106",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-ACEI-K-SUPPLEMENTS",
+      "drug_a": {
+        "class": "ACE_INHIBITOR"
+      },
+      "drug_b": {
+        "specific": "potassium_supplement"
+      },
+      "severity": "severe",
+      "mechanism": "Additive hyperkalaemia.",
+      "action": "Avoid combination unless K+ documented low and monitored.",
+      "citation": "BNF Appendix 1 \u2014 ACE inhibitors / potassium",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-ACEI-TRIMETHOPRIM",
+      "drug_a": {
+        "class": "ACE_INHIBITOR"
+      },
+      "drug_b": {
+        "specific": "trimethoprim"
+      },
+      "severity": "severe",
+      "mechanism": "Trimethoprim acts as a potassium-sparing diuretic; additive hyperkalaemia, especially in older adults with CKD.",
+      "action": "Avoid combination if alternative antibiotic available; if used, check U&Es within 5 days.",
+      "citation": "BNF Appendix 1 \u2014 ACE inhibitors / trimethoprim; MHRA Drug Safety Update Sept 2014",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-DUAL-RAAS",
+      "drug_a": {
+        "class": "ACE_INHIBITOR"
+      },
+      "drug_b": {
+        "class": "ARB"
+      },
+      "severity": "severe",
+      "mechanism": "Dual RAAS blockade increases hyperkalaemia, hypotension and AKI risk without survival benefit.",
+      "action": "Avoid except in specialist-supervised refractory heart failure.",
+      "citation": "BNF Appendix 1 \u2014 ACE inhibitors / angiotensin receptor blockers; MHRA Drug Safety Update May 2014",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-SSRI-MAOI",
+      "drug_a": {
+        "class": "SSRI"
+      },
+      "drug_b": {
+        "class": "MAOI"
+      },
+      "severity": "severe",
+      "mechanism": "Risk of life-threatening serotonin syndrome.",
+      "action": "Contraindicated. Allow 2-week washout (5 weeks for fluoxetine).",
+      "citation": "BNF Appendix 1 \u2014 SSRIs / MAOIs",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-SSRI-TRAMADOL",
+      "drug_a": {
+        "class": "SSRI"
+      },
+      "drug_b": {
+        "specific": "tramadol"
+      },
+      "severity": "moderate",
+      "mechanism": "Additive serotonergic effect \u2014 risk of serotonin syndrome and lowered seizure threshold.",
+      "action": "Avoid where possible; counsel patient on serotonin syndrome symptoms.",
+      "citation": "BNF Appendix 1 \u2014 SSRIs / tramadol",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-SSRI-TRIPTAN",
+      "drug_a": {
+        "class": "SSRI"
+      },
+      "drug_b": {
+        "class": "TRIPTAN"
+      },
+      "severity": "moderate",
+      "mechanism": "Theoretical risk of serotonin syndrome (clinically rare).",
+      "action": "Counsel; combination acceptable in most patients.",
+      "citation": "BNF Appendix 1 \u2014 SSRIs / triptans",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-SSRI-NSAID-BLEEDING",
+      "drug_a": {
+        "class": "SSRI"
+      },
+      "drug_b": {
+        "class": "NSAID"
+      },
+      "severity": "moderate",
+      "mechanism": "See DDI-NSAID-SSRI \u2014 additive GI bleeding risk.",
+      "action": "Co-prescribe PPI; consider paracetamol alternative.",
+      "citation": "BNF Appendix 1 \u2014 SSRIs / NSAIDs",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-METFORMIN-CONTRAST",
+      "drug_a": {
+        "specific": "metformin"
+      },
+      "drug_b": {
+        "specific": "iodinated_contrast_iv"
+      },
+      "severity": "moderate",
+      "mechanism": "Risk of contrast-induced AKI causing metformin accumulation and lactic acidosis.",
+      "action": "Withhold metformin from time of contrast administration; recheck eGFR at 48 hours; resume if renal function unchanged.",
+      "citation": "BNF \u2014 metformin (precautions); RCR / Royal College of Radiologists guidance",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-METFORMIN-ALCOHOL",
+      "drug_a": {
+        "specific": "metformin"
+      },
+      "drug_b": {
+        "specific": "alcohol_excess"
+      },
+      "severity": "moderate",
+      "mechanism": "Excessive alcohol potentiates metformin-associated lactic acidosis.",
+      "action": "Counsel against binge drinking; review if hazardous use.",
+      "citation": "BNF \u2014 metformin (precautions)",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-COLCHICINE-CLARITHROMYCIN",
+      "drug_a": {
+        "specific": "colchicine"
+      },
+      "drug_b": {
+        "specific": "clarithromycin"
+      },
+      "severity": "severe",
+      "mechanism": "Clarithromycin inhibits CYP3A4 and P-gp, raising colchicine levels into toxic range \u2014 risk of pancytopenia, myopathy, multi-organ failure.",
+      "action": "Avoid combination. If essential, suspend colchicine for course of macrolide.",
+      "citation": "BNF Appendix 1 \u2014 colchicine / clarithromycin; MHRA",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-COLCHICINE-CICLOSPORIN",
+      "drug_a": {
+        "specific": "colchicine"
+      },
+      "drug_b": {
+        "specific": "ciclosporin"
+      },
+      "severity": "severe",
+      "mechanism": "Ciclosporin inhibits CYP3A4 and P-gp, raising colchicine to toxic levels.",
+      "action": "Avoid; if unavoidable, reduce colchicine dose markedly and monitor for toxicity.",
+      "citation": "BNF Appendix 1 \u2014 colchicine / ciclosporin",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-PHENYTOIN-ENZYME",
+      "drug_a": {
+        "specific": "phenytoin"
+      },
+      "drug_b": {
+        "specific": "fluconazole"
+      },
+      "severity": "moderate",
+      "mechanism": "Fluconazole inhibits CYP2C9, raising phenytoin levels.",
+      "action": "Reduce phenytoin dose; monitor levels.",
+      "citation": "BNF Appendix 1 \u2014 phenytoin / fluconazole",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-CARBAMAZEPINE-MACROLIDE",
+      "drug_a": {
+        "specific": "carbamazepine"
+      },
+      "drug_b": {
+        "class": "MACROLIDE",
+        "specific_drugs_in_b": [
+          "clarithromycin",
+          "erythromycin"
+        ]
+      },
+      "severity": "severe",
+      "mechanism": "Macrolides inhibit CYP3A4, raising carbamazepine to toxic levels.",
+      "action": "Avoid clarithromycin/erythromycin; use azithromycin if possible.",
+      "citation": "BNF Appendix 1 \u2014 carbamazepine / macrolides",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-AMIODARONE-FLUOROQUINOLONE",
+      "drug_a": {
+        "specific": "amiodarone"
+      },
+      "drug_b": {
+        "class": "QUINOLONE"
+      },
+      "severity": "severe",
+      "mechanism": "Additive QT prolongation; risk of torsades de pointes.",
+      "action": "Avoid; if essential, baseline ECG and electrolyte correction.",
+      "citation": "BNF Appendix 1 \u2014 amiodarone / quinolones",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-CITALOPRAM-QT",
+      "drug_a": {
+        "specific": "citalopram"
+      },
+      "drug_b": {
+        "class": "QT_PROLONGING"
+      },
+      "severity": "severe",
+      "mechanism": "Additive QT prolongation. Citalopram itself has QT-prolonging properties.",
+      "action": "Avoid combination with other QT-prolonging drugs (e.g. amiodarone, methadone, quinolones).",
+      "citation": "BNF \u2014 citalopram (cautions); MHRA Drug Safety Update Dec 2011",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-AMIODARONE-WARFARIN",
+      "drug_a": {
+        "specific": "amiodarone"
+      },
+      "drug_b": {
+        "class": "VITAMIN_K_ANTAGONIST"
+      },
+      "severity": "severe",
+      "mechanism": "See DDI-WARFARIN-AMIODARONE.",
+      "action": "Reduce warfarin 25-50%; weekly INR.",
+      "citation": "BNF Appendix 1 \u2014 amiodarone / coumarins",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-DOAC-CLARITHROMYCIN",
+      "drug_a": {
+        "class": "DOAC"
+      },
+      "drug_b": {
+        "specific": "clarithromycin"
+      },
+      "severity": "moderate",
+      "mechanism": "Clarithromycin inhibits CYP3A4 and P-gp, raising DOAC levels (especially apixaban, rivaroxaban).",
+      "action": "Use azithromycin if alternative needed; if combination essential, monitor for bleeding and consider dose reduction.",
+      "citation": "BNF Appendix 1 \u2014 DOACs / clarithromycin",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-DOAC-RIFAMPICIN",
+      "drug_a": {
+        "class": "DOAC"
+      },
+      "drug_b": {
+        "specific": "rifampicin"
+      },
+      "severity": "severe",
+      "mechanism": "Rifampicin induces CYP3A4 and P-gp, reducing DOAC levels and risking thrombosis.",
+      "action": "Avoid; switch to LMWH/warfarin during rifampicin course.",
+      "citation": "BNF Appendix 1 \u2014 DOACs / rifampicin",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-LITHIUM-ACEI",
+      "drug_a": {
+        "specific": "lithium"
+      },
+      "drug_b": {
+        "class": "ACE_INHIBITOR"
+      },
+      "severity": "severe",
+      "mechanism": "ACE-I reduces lithium clearance, raising serum lithium.",
+      "action": "Check lithium level within 5-7 days of starting ACE-I.",
+      "citation": "BNF Appendix 1 \u2014 lithium / ACE inhibitors",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-LITHIUM-DIURETIC",
+      "drug_a": {
+        "specific": "lithium"
+      },
+      "drug_b": {
+        "class": "THIAZIDE"
+      },
+      "severity": "severe",
+      "mechanism": "Thiazides reduce lithium clearance, can double serum levels.",
+      "action": "Avoid combination if possible; if required, halve lithium dose and check levels weekly.",
+      "citation": "BNF Appendix 1 \u2014 lithium / thiazides",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-CLOPIDOGREL-PPI",
+      "drug_a": {
+        "specific": "clopidogrel"
+      },
+      "drug_b": {
+        "specific": "omeprazole"
+      },
+      "severity": "moderate",
+      "mechanism": "Omeprazole/esomeprazole inhibit CYP2C19, reducing conversion of clopidogrel to active metabolite \u2014 possible reduced antiplatelet effect.",
+      "action": "Use pantoprazole or lansoprazole if PPI required, or use H2 antagonist.",
+      "citation": "BNF Appendix 1 \u2014 clopidogrel / PPIs; MHRA Drug Safety Update April 2010",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-AZITHROMYCIN-WARFARIN",
+      "drug_a": {
+        "specific": "azithromycin"
+      },
+      "drug_b": {
+        "class": "VITAMIN_K_ANTAGONIST"
+      },
+      "severity": "moderate",
+      "mechanism": "Some reports of raised INR. Less marked than clarithromycin/erythromycin.",
+      "action": "Check INR mid-course or 3-5 days post.",
+      "citation": "BNF Appendix 1 \u2014 coumarins / azithromycin",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-METHOTREXATE-TRIMETHOPRIM",
+      "drug_a": {
+        "specific": "methotrexate"
+      },
+      "drug_b": {
+        "specific": "trimethoprim"
+      },
+      "severity": "severe",
+      "mechanism": "Both inhibit folate metabolism; risk of bone marrow suppression and pancytopenia.",
+      "action": "Avoid combination. Use nitrofurantoin or alternative for UTI in MTX patients.",
+      "citation": "BNF Appendix 1 \u2014 methotrexate / trimethoprim",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-METHOTREXATE-NSAID",
+      "drug_a": {
+        "specific": "methotrexate"
+      },
+      "drug_b": {
+        "class": "NSAID"
+      },
+      "severity": "moderate",
+      "mechanism": "See DDI-NSAID-METHOTREXATE \u2014 reduced clearance.",
+      "action": "Caution at low-dose weekly MTX (rheumatology); avoid with high-dose oncology MTX.",
+      "citation": "BNF Appendix 1 \u2014 methotrexate / NSAIDs",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-OPIOID-BENZODIAZEPINE",
+      "drug_a": {
+        "class": "OPIOID"
+      },
+      "drug_b": {
+        "class": "BENZODIAZEPINE"
+      },
+      "severity": "severe",
+      "mechanism": "Additive respiratory depression and sedation; significant overdose mortality.",
+      "action": "Avoid combination. If essential (palliative care, opioid-tolerant), use lowest doses and counsel on overdose risk.",
+      "citation": "BNF \u2014 opioids and benzodiazepines (cautions); MHRA Drug Safety Update March 2020",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-BETA-BLOCKER-VERAPAMIL",
+      "drug_a": {
+        "class": "BETA_BLOCKER"
+      },
+      "drug_b": {
+        "specific": "verapamil"
+      },
+      "severity": "severe",
+      "mechanism": "Additive negative inotropy and AV-node block; risk of severe bradycardia, heart block, or asystole.",
+      "action": "Avoid IV combination; oral combination only with specialist supervision.",
+      "citation": "BNF Appendix 1 \u2014 beta-blockers / verapamil",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-BETA-BLOCKER-DILTIAZEM",
+      "drug_a": {
+        "class": "BETA_BLOCKER"
+      },
+      "drug_b": {
+        "specific": "diltiazem"
+      },
+      "severity": "moderate",
+      "mechanism": "Additive negative inotropy and AV node depression.",
+      "action": "Use cautiously; monitor HR and BP.",
+      "citation": "BNF Appendix 1 \u2014 beta-blockers / diltiazem",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-AMIODARONE-DIGOXIN",
+      "drug_a": {
+        "specific": "amiodarone"
+      },
+      "drug_b": {
+        "specific": "digoxin"
+      },
+      "severity": "severe",
+      "mechanism": "See DDI-DIGOXIN-AMIODARONE.",
+      "action": "Halve digoxin; check level day 7.",
+      "citation": "BNF Appendix 1 \u2014 amiodarone / digoxin",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-SPIRONOLACTONE-TRIMETHOPRIM",
+      "drug_a": {
+        "specific": "spironolactone"
+      },
+      "drug_b": {
+        "specific": "trimethoprim"
+      },
+      "severity": "severe",
+      "mechanism": "Both raise K+; risk of hyperkalaemia.",
+      "action": "Avoid; use alternative antibiotic.",
+      "citation": "BNF Appendix 1 \u2014 spironolactone / trimethoprim",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "DDI-METRONIDAZOLE-ALCOHOL",
+      "drug_a": {
+        "specific": "metronidazole"
+      },
+      "drug_b": {
+        "specific": "alcohol"
+      },
+      "severity": "moderate",
+      "mechanism": "Disulfiram-like reaction (flushing, vomiting) \u2014 historical association though clinical magnitude debated.",
+      "action": "Counsel patient to avoid alcohol during course and 48h after.",
+      "citation": "BNF \u2014 metronidazole (cautions)",
+      "clinical_review_status": "summarised_from_named_source"
+    }
+  ],
+  "_clinical_review_note": "Each entry summarises a named clinical source in original wording (fair use). clinical_review_status='summarised_from_named_source' means: source is named, mechanism/severity reflect the source's substance, but verbatim text is NOT reproduced. NICE/MHRA-cited entries may be upgraded to 'verbatim_verified' (those sources are Open Government Licence). BNF/Beers/STOPP-START stay summarised indefinitely (closed-licence sources)."
+}

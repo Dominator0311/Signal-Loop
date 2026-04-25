@@ -1,0 +1,46 @@
+{
+  "patient_id": "patient-margaret",
+  "age": 72,
+  "sex": "female",
+  "weight_kg": 68,
+  "renal_function": {
+    "latest_egfr": 42,
+    "trajectory": "declining",
+    "rate_of_change_per_month": -3.3
+  },
+  "active_medications": [
+    {
+      "name": "lisinopril 10mg",
+      "drug_class": "ACE_INHIBITOR",
+      "classes": ["ACE_INHIBITOR"]
+    },
+    {
+      "name": "furosemide 40mg",
+      "drug_class": "LOOP_DIURETIC",
+      "classes": ["LOOP_DIURETIC", "DIURETIC"]
+    },
+    {
+      "name": "metformin 500mg",
+      "drug_class": "BIGUANIDE",
+      "classes": ["BIGUANIDE"]
+    },
+    {
+      "name": "simvastatin 20mg",
+      "drug_class": "STATIN",
+      "classes": ["STATIN"]
+    }
+  ],
+  "allergies": [
+    {
+      "substance": "penicillin",
+      "reaction": "rash"
+    }
+  ],
+  "clinical_context_flags": [
+    "frail_elderly",
+    "polypharmacy",
+    "cardio_renal_high_risk",
+    "ckd_stage_3b_near_4"
+  ],
+  "reasoning_trace": "Primary risk: declining eGFR with ACE-I + diuretic = triple-whammy exposure. Secondary: age 72 with polypharmacy."
+}

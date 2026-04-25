@@ -1,0 +1,40 @@
+# Concord MCP — Fly.io deployment config
+#
+# Deploy from the project root (/Desktop/Med/):
+#   fly deploy --config fly-concord.toml
+#
+# First-time setup:
+#   fly apps create concord-mcp --org personal
+#   fly secrets set GEMINI_API_KEY=<your-key> --app concord-mcp
+#   fly deploy --config fly-concord.toml
+
+app = "concord-mcp"
+primary_region = "lhr"
+
+[build]
+  # Dockerfile path relative to project root (build context = project root,
+  # so medsafe_core/ and concord-mcp/ are both available during build)
+  dockerfile = "concord-mcp/Dockerfile"
+
+[env]
+  PORT = "8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+  [[http_service.checks]]
+    grace_period = "10s"
+    interval = "30s"
+    method = "GET"
+    path = "/health"
+    timeout = "5s"
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1

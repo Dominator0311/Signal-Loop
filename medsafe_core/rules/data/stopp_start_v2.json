@@ -1,0 +1,612 @@
+{
+  "_description": "STOPP/START v2 criteria for prescribing review in older adults (age >=65). Top STOPP (potentially inappropriate prescriptions) and START (potential prescribing omissions) criteria curated for hackathon scope.",
+  "_source": "O'Mahony D, O'Sullivan D, Byrne S, et al. STOPP/START criteria for potentially inappropriate prescribing in older people: version 2. Age and Ageing 2015; 44(2):213-218. doi:10.1093/ageing/afu145.",
+  "stopp_criteria": [
+    {
+      "id": "STOPP-A1",
+      "section": "A. Indication of medication",
+      "criterion": "Any drug prescribed without an evidence-based clinical indication.",
+      "drug_classes": [],
+      "trigger": "no_indication_recorded",
+      "severity": "moderate",
+      "requires_indication": true,
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-A2",
+      "section": "A. Indication of medication",
+      "criterion": "Any drug prescribed beyond the recommended duration, where treatment duration is well defined.",
+      "drug_classes": [],
+      "trigger": "duration_exceeded",
+      "severity": "moderate",
+      "requires_duration": true,
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-A3",
+      "section": "A. Indication of medication",
+      "criterion": "Any duplicate drug class prescription (e.g. two NSAIDs, SSRIs, loop diuretics, ACE inhibitors, anticoagulants); optimisation of monotherapy within a single drug class should be observed prior to considering a new agent.",
+      "drug_classes": [
+        "NSAID",
+        "SSRI",
+        "LOOP_DIURETIC",
+        "ACE_INHIBITOR",
+        "ANTICOAGULANT",
+        "ARB"
+      ],
+      "trigger": "duplicate_class",
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-B6",
+      "section": "B. Cardiovascular system",
+      "criterion": "Loop diuretic for treatment of hypertension with concurrent urinary incontinence (likely to exacerbate incontinence).",
+      "drug_classes": [
+        "LOOP_DIURETIC"
+      ],
+      "trigger": "loop_for_htn_with_incontinence",
+      "context_flag": "urinary_incontinence",
+      "severity": "moderate",
+      "requires_indication": true,
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-B7",
+      "section": "B. Cardiovascular system",
+      "criterion": "Loop diuretic as first-line monotherapy for hypertension (safer, more effective alternatives available).",
+      "drug_classes": [
+        "LOOP_DIURETIC"
+      ],
+      "trigger": "loop_first_line_htn",
+      "severity": "moderate",
+      "requires_indication": true,
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-B8",
+      "section": "B. Cardiovascular system",
+      "criterion": "Thiazide diuretic with current significant hypokalaemia (serum K+ <3.0 mmol/L), hyponatraemia (Na+ <130 mmol/L), hypercalcaemia or with a history of gout (hypokalaemia, hyponatraemia, hypercalcaemia and gout can be precipitated by thiazide diuretic).",
+      "drug_classes": [
+        "THIAZIDE"
+      ],
+      "trigger": "thiazide_with_electrolyte_or_gout",
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-B12",
+      "section": "B. Cardiovascular system",
+      "criterion": "Loop diuretic for dependent ankle oedema without clinical, biochemical evidence or radiological evidence of heart failure, liver failure, nephrotic syndrome or renal failure (leg elevation and/or compression hosiery usually more appropriate).",
+      "drug_classes": [
+        "LOOP_DIURETIC"
+      ],
+      "trigger": "loop_for_oedema_no_hf",
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-C1",
+      "section": "C. Antiplatelet/anticoagulant",
+      "criterion": "Long-term aspirin at doses greater than 160mg per day (increased risk of bleeding, no evidence for increased efficacy).",
+      "drug_classes": [
+        "ANTIPLATELET"
+      ],
+      "specific_drug": "aspirin",
+      "trigger": "aspirin_high_dose",
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-C2",
+      "section": "C. Antiplatelet/anticoagulant",
+      "criterion": "Aspirin with a past history of peptic ulcer disease without concomitant PPI (risk of recurrent peptic ulcer).",
+      "drug_classes": [
+        "ANTIPLATELET"
+      ],
+      "specific_drug": "aspirin",
+      "trigger": "aspirin_with_pud_no_ppi",
+      "context_flag": "peptic_ulcer_history",
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-C3",
+      "section": "C. Antiplatelet/anticoagulant",
+      "criterion": "Aspirin, clopidogrel, dipyridamole, vitamin K antagonists, direct thrombin inhibitors or factor Xa inhibitors with concurrent significant bleeding risk (i.e. uncontrolled severe hypertension, bleeding diathesis, recent non-trivial spontaneous bleeding).",
+      "drug_classes": [
+        "ANTIPLATELET",
+        "ANTICOAGULANT",
+        "DOAC"
+      ],
+      "trigger": "antithrombotic_with_bleeding_risk",
+      "context_flag": "active_bleeding_risk",
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-C4",
+      "section": "C. Antiplatelet/anticoagulant",
+      "criterion": "Aspirin plus clopidogrel as secondary stroke prevention, unless the patient has a coronary stent(s) inserted in the previous 12 months or concurrent acute coronary syndrome or has a high grade symptomatic carotid arterial stenosis (no evidence of added benefit over clopidogrel monotherapy).",
+      "drug_classes": [
+        "ANTIPLATELET"
+      ],
+      "trigger": "dual_antiplatelet_for_stroke",
+      "severity": "moderate",
+      "requires_indication": true,
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-D1",
+      "section": "D. Central nervous system / psychotropic",
+      "criterion": "Tricyclic antidepressants with dementia, narrow angle glaucoma, cardiac conduction abnormalities, prostatism, or prior history of urinary retention (risk of worsening these conditions).",
+      "drug_classes": [
+        "TCA"
+      ],
+      "trigger": "tca_with_contraindication",
+      "context_flag": "dementia_or_glaucoma_or_prostatism",
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-D2",
+      "section": "D. Central nervous system / psychotropic",
+      "criterion": "Initiation of tricyclic antidepressants as first-line antidepressant treatment (higher risk of adverse drug reactions with TCAs than with SSRIs or SNRIs).",
+      "drug_classes": [
+        "TCA"
+      ],
+      "trigger": "tca_first_line",
+      "severity": "moderate",
+      "requires_indication": true,
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-D5",
+      "section": "D. Central nervous system / psychotropic",
+      "criterion": "Benzodiazepines for >=4 weeks (no indication for longer treatment; risk of prolonged sedation, confusion, impaired balance, falls, road traffic accidents; all benzodiazepines should be withdrawn gradually if taken for >2 weeks as there is a risk of causing a benzodiazepine withdrawal syndrome if stopped abruptly).",
+      "drug_classes": [
+        "BENZODIAZEPINE"
+      ],
+      "trigger": "bzd_long_term",
+      "severity": "major",
+      "requires_duration": true,
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-D8",
+      "section": "D. Central nervous system / psychotropic",
+      "criterion": "Anticholinergic/antimuscarinic drugs to treat extra-pyramidal side-effects of neuroleptic medications (risk of anticholinergic toxicity).",
+      "drug_classes": [
+        "ANTICHOLINERGIC"
+      ],
+      "trigger": "anticholinergic_for_eps",
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-D11",
+      "section": "D. Central nervous system / psychotropic",
+      "criterion": "Anticholinergics/antimuscarinics in patients with delirium or dementia (risk of exacerbation of cognitive impairment).",
+      "drug_classes": [
+        "ANTICHOLINERGIC",
+        "TCA"
+      ],
+      "trigger": "anticholinergic_with_dementia",
+      "context_flag": "dementia_or_delirium",
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-D14",
+      "section": "D. Central nervous system / psychotropic",
+      "criterion": "Benzodiazepines, Z-drugs (zolpidem, zopiclone, zaleplon), or first-generation antihistamines as hypnotics (risk of confusion, hypotension, falls).",
+      "drug_classes": [
+        "BENZODIAZEPINE",
+        "Z_DRUG",
+        "ANTIHISTAMINE_FIRST_GEN"
+      ],
+      "trigger": "sedative_hypnotic",
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-E3",
+      "section": "E. Renal system",
+      "criterion": "NSAIDs in patients with eGFR <50 mL/min/1.73m^2 (risk of deterioration in renal function).",
+      "drug_classes": [
+        "NSAID"
+      ],
+      "trigger": "nsaid_with_low_egfr",
+      "egfr_threshold": 50,
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-E4",
+      "section": "E. Renal system",
+      "criterion": "Colchicine in patients with eGFR <10 mL/min/1.73m^2 (risk of toxicity).",
+      "drug_classes": [
+        "COLCHICINE"
+      ],
+      "trigger": "colchicine_with_low_egfr",
+      "egfr_threshold": 10,
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-E5",
+      "section": "E. Renal system",
+      "criterion": "Metformin if eGFR <30 mL/min/1.73m^2 (risk of lactic acidosis).",
+      "drug_classes": [
+        "BIGUANIDE"
+      ],
+      "trigger": "metformin_with_low_egfr",
+      "egfr_threshold": 30,
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-F2",
+      "section": "F. Gastrointestinal",
+      "criterion": "Drugs likely to cause constipation (e.g. antimuscarinic / anticholinergic drugs, oral iron, opioids, verapamil, aluminium antacids) in patients with chronic constipation where non-constipating alternatives are available.",
+      "drug_classes": [
+        "ANTICHOLINERGIC",
+        "OPIOID",
+        "IRON_ORAL"
+      ],
+      "trigger": "constipating_drug_with_chronic_constipation",
+      "context_flag": "chronic_constipation",
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-F3",
+      "section": "F. Gastrointestinal",
+      "criterion": "Oral elemental iron at doses greater than 200mg daily (no evidence of enhanced iron absorption above this dose).",
+      "drug_classes": [
+        "IRON_ORAL"
+      ],
+      "trigger": "high_dose_oral_iron",
+      "severity": "minor",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-G2",
+      "section": "G. Respiratory",
+      "criterion": "Systemic corticosteroids instead of inhaled corticosteroids for maintenance therapy in moderate-severe COPD.",
+      "drug_classes": [
+        "SYSTEMIC_CORTICOSTEROID"
+      ],
+      "trigger": "systemic_steroid_for_copd_maintenance",
+      "context_flag": "copd",
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-H1",
+      "section": "H. Musculoskeletal",
+      "criterion": "Non-steroidal anti-inflammatory drug (NSAID) other than COX-2 selective agents with concurrent history of peptic ulcer disease or GI bleeding, unless with concurrent PPI or H2 antagonist.",
+      "drug_classes": [
+        "NSAID"
+      ],
+      "trigger": "nsaid_with_pud_no_ppi",
+      "context_flag": "peptic_ulcer_history",
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-H2",
+      "section": "H. Musculoskeletal",
+      "criterion": "NSAID with severe hypertension or severe heart failure (risk of exacerbation).",
+      "drug_classes": [
+        "NSAID"
+      ],
+      "trigger": "nsaid_with_severe_htn_or_hf",
+      "context_flag": "severe_hypertension_or_heart_failure",
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-H3",
+      "section": "H. Musculoskeletal",
+      "criterion": "Long-term use of NSAID (>3 months) for symptom relief of osteoarthritis pain where paracetamol has not been tried (simple analgesics preferable and usually as effective for pain relief).",
+      "drug_classes": [
+        "NSAID"
+      ],
+      "trigger": "nsaid_chronic_oa",
+      "context_flag": "osteoarthritis_chronic",
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-H8",
+      "section": "H. Musculoskeletal",
+      "criterion": "Long-term corticosteroids (>3 months) as monotherapy for rheumatoid arthritis (risk of systemic corticosteroid side-effects).",
+      "drug_classes": [
+        "SYSTEMIC_CORTICOSTEROID"
+      ],
+      "trigger": "long_term_steroid_monotherapy_ra",
+      "context_flag": "rheumatoid_arthritis",
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-I1",
+      "section": "I. Falls risk",
+      "criterion": "Benzodiazepines (sedative, may cause reduced sensorium, impair balance) in patients with recurrent falls.",
+      "drug_classes": [
+        "BENZODIAZEPINE"
+      ],
+      "trigger": "bzd_with_falls",
+      "context_flag": "recurrent_falls",
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-I2",
+      "section": "I. Falls risk",
+      "criterion": "Neuroleptic drugs (may cause gait dyspraxia, parkinsonism) in patients with recurrent falls.",
+      "drug_classes": [
+        "ANTIPSYCHOTIC"
+      ],
+      "trigger": "antipsychotic_with_falls",
+      "context_flag": "recurrent_falls",
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "STOPP-K1",
+      "section": "K. Drugs that predictably increase the risk of falls in older people",
+      "criterion": "Benzodiazepines (sedative, may reduce sensorium, impair balance).",
+      "drug_classes": [
+        "BENZODIAZEPINE"
+      ],
+      "trigger": "bzd_falls_predictable",
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    }
+  ],
+  "start_criteria": [
+    {
+      "id": "START-A1",
+      "section": "A. Cardiovascular system",
+      "criterion": "Vitamin K antagonists or direct thrombin inhibitors or factor Xa inhibitors in the presence of chronic atrial fibrillation.",
+      "indication_flag": "atrial_fibrillation",
+      "expected_drug_classes": [
+        "ANTICOAGULANT",
+        "DOAC"
+      ],
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-A2",
+      "section": "A. Cardiovascular system",
+      "criterion": "Aspirin (75-160mg once daily) in the presence of chronic atrial fibrillation, where vitamin K antagonists or direct thrombin inhibitors or factor Xa inhibitors are contraindicated.",
+      "indication_flag": "atrial_fibrillation_anticoag_contraindicated",
+      "expected_drug_classes": [
+        "ANTIPLATELET"
+      ],
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-A3",
+      "section": "A. Cardiovascular system",
+      "criterion": "Antiplatelet therapy (aspirin or clopidogrel or prasugrel or ticagrelor) with a documented history of coronary, cerebral or peripheral vascular disease.",
+      "indication_flag": "atherosclerotic_disease",
+      "expected_drug_classes": [
+        "ANTIPLATELET"
+      ],
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-A4",
+      "section": "A. Cardiovascular system",
+      "criterion": "Antihypertensive therapy where systolic blood pressure consistently >160 mmHg and/or diastolic blood pressure consistently >90 mmHg; if systolic blood pressure >140 mmHg and/or diastolic blood pressure >90 mmHg in diabetics.",
+      "indication_flag": "uncontrolled_hypertension",
+      "expected_drug_classes": [
+        "ACE_INHIBITOR",
+        "ARB",
+        "CALCIUM_CHANNEL_BLOCKER",
+        "THIAZIDE"
+      ],
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-A5",
+      "section": "A. Cardiovascular system",
+      "criterion": "Statin therapy with a documented history of coronary, cerebral or peripheral vascular disease, where the patient's functional status remains independent for activities of daily living and life expectancy is >5 years.",
+      "indication_flag": "atherosclerotic_disease",
+      "expected_drug_classes": [
+        "STATIN"
+      ],
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-A6",
+      "section": "A. Cardiovascular system",
+      "criterion": "ACE inhibitor with systolic heart failure and/or documented coronary artery disease.",
+      "indication_flag": "heart_failure_or_cad",
+      "expected_drug_classes": [
+        "ACE_INHIBITOR",
+        "ARB"
+      ],
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-A7",
+      "section": "A. Cardiovascular system",
+      "criterion": "Beta-blocker with ischaemic heart disease.",
+      "indication_flag": "ischaemic_heart_disease",
+      "expected_drug_classes": [
+        "BETA_BLOCKER"
+      ],
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-A8",
+      "section": "A. Cardiovascular system",
+      "criterion": "Appropriate beta-blocker (bisoprolol, nebivolol, metoprolol or carvedilol) with stable systolic heart failure.",
+      "indication_flag": "heart_failure_systolic",
+      "expected_drug_classes": [
+        "BETA_BLOCKER"
+      ],
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-B1",
+      "section": "B. Respiratory system",
+      "criterion": "Regular inhaled beta2 agonist or antimuscarinic bronchodilator (e.g. ipratropium, tiotropium) for mild to moderate asthma or COPD.",
+      "indication_flag": "asthma_or_copd",
+      "expected_drug_classes": [
+        "BETA2_AGONIST",
+        "ANTIMUSCARINIC_BRONCHODILATOR"
+      ],
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-B2",
+      "section": "B. Respiratory system",
+      "criterion": "Regular inhaled corticosteroid for moderate-severe asthma or COPD, where FEV1 <50% of predicted value and repeated exacerbations requiring treatment with oral corticosteroids.",
+      "indication_flag": "moderate_severe_copd_or_asthma",
+      "expected_drug_classes": [
+        "INHALED_CORTICOSTEROID"
+      ],
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-C1",
+      "section": "C. Central nervous system",
+      "criterion": "L-DOPA or a dopamine agonist in idiopathic Parkinson's disease with functional impairment and resultant disability.",
+      "indication_flag": "parkinsons_disease",
+      "expected_drug_classes": [
+        "DOPAMINE_AGONIST",
+        "LEVODOPA"
+      ],
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-C2",
+      "section": "C. Central nervous system",
+      "criterion": "Non-TCA antidepressant in the presence of persistent major depressive symptoms.",
+      "indication_flag": "major_depression",
+      "expected_drug_classes": [
+        "SSRI",
+        "SNRI"
+      ],
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-C3",
+      "section": "C. Central nervous system",
+      "criterion": "Acetylcholinesterase inhibitor (e.g. donepezil, rivastigmine, galantamine) for mild-moderate Alzheimer's dementia or Lewy Body dementia.",
+      "indication_flag": "alzheimer_or_lewy_body",
+      "expected_drug_classes": [
+        "CHOLINESTERASE_INHIBITOR"
+      ],
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-D1",
+      "section": "D. Gastrointestinal",
+      "criterion": "Proton pump inhibitor with severe gastro-oesophageal reflux disease or peptic stricture requiring dilatation.",
+      "indication_flag": "severe_gord",
+      "expected_drug_classes": [
+        "PPI"
+      ],
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-D2",
+      "section": "D. Gastrointestinal",
+      "criterion": "Fibre supplements (e.g. bran, ispaghula, methylcellulose, sterculia) for diverticulosis with a history of constipation.",
+      "indication_flag": "diverticulosis_with_constipation",
+      "expected_drug_classes": [
+        "FIBRE_SUPPLEMENT"
+      ],
+      "severity": "minor",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-E1",
+      "section": "E. Musculoskeletal",
+      "criterion": "Disease-modifying anti-rheumatic drug (DMARD) with active, disabling rheumatoid disease.",
+      "indication_flag": "rheumatoid_arthritis_active",
+      "expected_drug_classes": [
+        "DMARD"
+      ],
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-E3",
+      "section": "E. Musculoskeletal",
+      "criterion": "Bisphosphonate and vitamin D and calcium in patients taking long-term systemic corticosteroid therapy.",
+      "indication_flag": "long_term_systemic_steroid",
+      "expected_drug_classes": [
+        "BISPHOSPHONATE"
+      ],
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-E4",
+      "section": "E. Musculoskeletal",
+      "criterion": "Calcium and vitamin D supplement in patients with known osteoporosis and/or previous fragility fracture(s) and/or BMD T-score < -2.5.",
+      "indication_flag": "osteoporosis",
+      "expected_drug_classes": [
+        "CALCIUM_VIT_D"
+      ],
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-F1",
+      "section": "F. Endocrine",
+      "criterion": "ACE inhibitor or angiotensin receptor blocker (if intolerant of ACE inhibitor) in diabetes with evidence of renal disease (i.e. dipstick proteinuria or microalbuminuria with or without elevated serum creatinine).",
+      "indication_flag": "diabetic_kidney_disease",
+      "expected_drug_classes": [
+        "ACE_INHIBITOR",
+        "ARB"
+      ],
+      "severity": "major",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-G1",
+      "section": "G. Genitourinary",
+      "criterion": "Alpha-1 receptor blocker (e.g. tamsulosin, alfuzosin, doxazosin) with symptomatic prostatism, where prostatectomy is not considered necessary.",
+      "indication_flag": "symptomatic_bph",
+      "expected_drug_classes": [
+        "ALPHA_BLOCKER"
+      ],
+      "severity": "moderate",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "START-G2",
+      "section": "G. Genitourinary",
+      "criterion": "5-alpha reductase inhibitor with symptomatic prostatism, where prostatectomy is not considered necessary.",
+      "indication_flag": "symptomatic_bph",
+      "expected_drug_classes": [
+        "FIVE_ALPHA_REDUCTASE_INHIBITOR"
+      ],
+      "severity": "minor",
+      "clinical_review_status": "summarised_from_named_source"
+    }
+  ],
+  "_clinical_review_note": "Each entry summarises a named clinical source in original wording (fair use). clinical_review_status='summarised_from_named_source' means: source is named, mechanism/severity reflect the source's substance, but verbatim text is NOT reproduced. NICE/MHRA-cited entries may be upgraded to 'verbatim_verified' (those sources are Open Government Licence). BNF/Beers/STOPP-START stay summarised indefinitely (closed-licence sources)."
+}

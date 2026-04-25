@@ -1,0 +1,854 @@
+{
+  "_description": "Drug-specific renally-adjusted dosing tables for CheckRenalDoseAdjustment. Keyed by canonical drug name (matches drug_classes.json keys / synonyms). Each drug carries an ordered list of bands; the engine selects the lowest band whose 'egfr_max' is >= patient eGFR (i.e. the most restrictive applicable band).",
+  "_source": "BNF 86 (UK), individual SPCs, NICE NG28 (diabetes), NICE NG203 (CKD), NICE CG185 (lithium). Manually curated from publicly summarised BNF renal-impairment monographs. Do NOT use for clinical decisions without independent verification \u2014 these mirror BNF guidance text but the field is summarised, not verbatim from the source PDF.",
+  "drugs": {
+    "metformin": {
+      "drug_class": "BIGUANIDE",
+      "indication": "Type 2 diabetes",
+      "default_dose": "500mg BD-TDS, max 2g daily",
+      "bands": [
+        {
+          "egfr_min": 60,
+          "egfr_max": null,
+          "adjustment": "Standard dose. Max 2g daily.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 metformin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 45,
+          "egfr_max": 59,
+          "adjustment": "Review benefits; standard dose usually safe. Monitor renal function 3-6 monthly.",
+          "severity": "info",
+          "citation_source": "NICE NG28 \u00a71.6.1; BNF \u2014 metformin",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 30,
+          "egfr_max": 44,
+          "adjustment": "Reduce dose: max 1g daily total. Monitor renal function 3-monthly.",
+          "severity": "moderate",
+          "citation_source": "NICE NG28 \u00a71.6.1; BNF \u2014 metformin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 29,
+          "adjustment": "AVOID \u2014 discontinue. Risk of lactic acidosis.",
+          "severity": "contraindicated",
+          "citation_source": "NICE NG28 \u00a71.6.1; BNF \u2014 metformin (contraindications)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "gabapentin": {
+      "drug_class": "GABAPENTINOID",
+      "indication": "Neuropathic pain, focal seizures",
+      "default_dose": "300mg TDS, titrate to 900-3600mg daily",
+      "bands": [
+        {
+          "egfr_min": 80,
+          "egfr_max": null,
+          "adjustment": "Standard dose: max 3600mg daily in divided doses.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 gabapentin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 50,
+          "egfr_max": 79,
+          "adjustment": "Max 1800mg daily in divided doses.",
+          "severity": "minor",
+          "citation_source": "BNF \u2014 gabapentin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 30,
+          "egfr_max": 49,
+          "adjustment": "Max 900mg daily in divided doses.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 gabapentin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 15,
+          "egfr_max": 29,
+          "adjustment": "Max 600mg daily in divided doses.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 gabapentin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 14,
+          "adjustment": "Max 300mg daily (or 300mg on alternate days). Specialist supervision.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 gabapentin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "pregabalin": {
+      "drug_class": "GABAPENTINOID",
+      "indication": "Neuropathic pain, anxiety, focal seizures",
+      "default_dose": "75mg BD, titrate to 600mg daily max",
+      "bands": [
+        {
+          "egfr_min": 60,
+          "egfr_max": null,
+          "adjustment": "Standard dose: max 600mg daily in 2-3 divided doses.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 pregabalin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 30,
+          "egfr_max": 59,
+          "adjustment": "Max 300mg daily in 2-3 divided doses.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 pregabalin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 15,
+          "egfr_max": 29,
+          "adjustment": "Max 150mg daily in 1-2 divided doses.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 pregabalin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 14,
+          "adjustment": "Max 75mg daily (single dose). Specialist supervision.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 pregabalin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "atenolol": {
+      "drug_class": "BETA_BLOCKER",
+      "indication": "Hypertension, angina, arrhythmia",
+      "default_dose": "25-100mg OD",
+      "bands": [
+        {
+          "egfr_min": 35,
+          "egfr_max": null,
+          "adjustment": "Standard dose.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 atenolol (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 15,
+          "egfr_max": 34,
+          "adjustment": "Max 50mg daily.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 atenolol (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 14,
+          "adjustment": "Max 25mg daily (or 50mg alternate days).",
+          "severity": "major",
+          "citation_source": "BNF \u2014 atenolol (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "digoxin": {
+      "drug_class": "CARDIAC_GLYCOSIDE",
+      "indication": "AF rate control, heart failure",
+      "default_dose": "125-250 micrograms OD",
+      "bands": [
+        {
+          "egfr_min": 50,
+          "egfr_max": null,
+          "adjustment": "Standard dose: 125-250 micrograms OD; check levels 7-10 days.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 digoxin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 20,
+          "egfr_max": 49,
+          "adjustment": "Reduce dose by 25-50% (typically 62.5-125 micrograms OD); monitor levels closely.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 digoxin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 19,
+          "adjustment": "Reduce dose by 50-75% (often 62.5 micrograms alternate days). Toxicity risk is high \u2014 frequent level monitoring.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 digoxin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "allopurinol": {
+      "drug_class": "XANTHINE_OXIDASE_INHIBITOR",
+      "indication": "Gout prophylaxis",
+      "default_dose": "100-300mg OD, titrate to urate target",
+      "bands": [
+        {
+          "egfr_min": 60,
+          "egfr_max": null,
+          "adjustment": "Standard initiation 100mg daily; titrate by 100mg every 4 weeks to urate target. Max 900mg.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 allopurinol (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 30,
+          "egfr_max": 59,
+          "adjustment": "Start 50-100mg daily; titrate cautiously. Watch for hypersensitivity.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 allopurinol (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 29,
+          "adjustment": "Start 50mg daily or 100mg alternate days; titrate slowly. Specialist input advised.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 allopurinol (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "ramipril": {
+      "drug_class": "ACE_INHIBITOR",
+      "indication": "Hypertension, HF, post-MI, CKD with proteinuria",
+      "default_dose": "1.25-10mg OD",
+      "bands": [
+        {
+          "egfr_min": 60,
+          "egfr_max": null,
+          "adjustment": "Standard initiation 1.25-2.5mg OD; titrate to 10mg.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 ramipril (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 30,
+          "egfr_max": 59,
+          "adjustment": "Start 1.25mg OD; titrate slowly. Recheck U&Es 1-2 weeks after each titration.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 ramipril (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 29,
+          "adjustment": "Initial 1.25mg OD, max 5mg OD. Specialist supervision recommended.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 ramipril (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "lisinopril": {
+      "drug_class": "ACE_INHIBITOR",
+      "indication": "Hypertension, HF",
+      "default_dose": "5-40mg OD",
+      "bands": [
+        {
+          "egfr_min": 30,
+          "egfr_max": null,
+          "adjustment": "Standard dose; recheck U&Es 1-2 weeks after initiation/titration.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 lisinopril (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 10,
+          "egfr_max": 29,
+          "adjustment": "Start 2.5-5mg OD; titrate slowly. Max 40mg.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 lisinopril (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 9,
+          "adjustment": "Start 2.5mg OD; specialist supervision.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 lisinopril (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "gentamicin": {
+      "drug_class": "AMINOGLYCOSIDE",
+      "indication": "Severe gram-negative infection",
+      "default_dose": "5-7 mg/kg ONCE daily (extended interval) \u2014 adjust to levels",
+      "bands": [
+        {
+          "egfr_min": 60,
+          "egfr_max": null,
+          "adjustment": "Standard 5-7 mg/kg ONCE daily. Trough <1 mg/L before next dose.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 gentamicin; local trust aminoglycoside protocol",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 30,
+          "egfr_max": 59,
+          "adjustment": "Use extended interval (e.g. 36-hourly) or reduce dose; mandatory level monitoring.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 gentamicin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 29,
+          "adjustment": "AVOID if alternative available. If essential, single dose then re-dose only when level <1 mg/L. Specialist supervision.",
+          "severity": "contraindicated",
+          "citation_source": "BNF \u2014 gentamicin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "vancomycin": {
+      "drug_class": "GLYCOPEPTIDE",
+      "indication": "Serious gram-positive infection",
+      "default_dose": "Loading 25-30 mg/kg, then maintenance per nomogram (target trough 15-20 mg/L)",
+      "bands": [
+        {
+          "egfr_min": 50,
+          "egfr_max": null,
+          "adjustment": "Standard nomogram dosing (e.g. 1g BD); target trough 10-20 mg/L.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 vancomycin; local trust nomogram",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 20,
+          "egfr_max": 49,
+          "adjustment": "Extended interval (24-hourly). Mandatory pre-dose level before each dose.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 vancomycin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 19,
+          "adjustment": "Loading dose only; redose only when level <15 mg/L. Specialist supervision.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 vancomycin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "dabigatran": {
+      "drug_class": "DOAC",
+      "indication": "AF stroke prevention, VTE",
+      "default_dose": "150mg BD (AF), 110mg BD if age >=80 or bleeding risk",
+      "bands": [
+        {
+          "egfr_min": 50,
+          "egfr_max": null,
+          "adjustment": "Standard 150mg BD (110mg BD if age >=80, verapamil, or high bleeding risk).",
+          "severity": "info",
+          "citation_source": "BNF \u2014 dabigatran (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 30,
+          "egfr_max": 49,
+          "adjustment": "110mg BD; reassess monthly.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 dabigatran (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 29,
+          "adjustment": "CONTRAINDICATED. Switch to apixaban or warfarin.",
+          "severity": "contraindicated",
+          "citation_source": "BNF \u2014 dabigatran (contraindications)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "apixaban": {
+      "drug_class": "DOAC",
+      "indication": "AF stroke prevention, VTE",
+      "default_dose": "5mg BD (AF); 2.5mg BD if any 2 of: age >=80, weight <=60kg, creatinine >=133",
+      "bands": [
+        {
+          "egfr_min": 30,
+          "egfr_max": null,
+          "adjustment": "Standard 5mg BD; 2.5mg BD if any 2 of: age >=80, weight <=60kg, creatinine >=133 micromol/L.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 apixaban (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 15,
+          "egfr_max": 29,
+          "adjustment": "2.5mg BD.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 apixaban (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 14,
+          "adjustment": "AVOID \u2014 not recommended.",
+          "severity": "contraindicated",
+          "citation_source": "BNF \u2014 apixaban (contraindications)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "rivaroxaban": {
+      "drug_class": "DOAC",
+      "indication": "AF stroke prevention, VTE",
+      "default_dose": "20mg OD (AF), 15mg OD if eGFR 15-49",
+      "bands": [
+        {
+          "egfr_min": 50,
+          "egfr_max": null,
+          "adjustment": "Standard 20mg OD with food.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 rivaroxaban (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 15,
+          "egfr_max": 49,
+          "adjustment": "15mg OD with food.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 rivaroxaban (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 14,
+          "adjustment": "AVOID \u2014 not recommended.",
+          "severity": "contraindicated",
+          "citation_source": "BNF \u2014 rivaroxaban (contraindications)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "edoxaban": {
+      "drug_class": "DOAC",
+      "indication": "AF stroke prevention, VTE",
+      "default_dose": "60mg OD; 30mg OD if eGFR 15-50, weight <=60kg, or strong P-gp inhibitor",
+      "bands": [
+        {
+          "egfr_min": 50,
+          "egfr_max": 95,
+          "adjustment": "60mg OD (or 30mg OD if weight <=60kg or P-gp inhibitor).",
+          "severity": "info",
+          "citation_source": "BNF \u2014 edoxaban (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 15,
+          "egfr_max": 49,
+          "adjustment": "30mg OD.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 edoxaban (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 14,
+          "adjustment": "AVOID.",
+          "severity": "contraindicated",
+          "citation_source": "BNF \u2014 edoxaban (contraindications)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ],
+      "_extra_notes": "Edoxaban also AVOID if eGFR >95 (reduced efficacy in stroke prevention vs warfarin)."
+    },
+    "enoxaparin": {
+      "drug_class": "LMWH",
+      "indication": "VTE prophylaxis/treatment, ACS",
+      "default_dose": "Treatment 1.5 mg/kg OD or 1 mg/kg BD",
+      "bands": [
+        {
+          "egfr_min": 30,
+          "egfr_max": null,
+          "adjustment": "Standard treatment dose 1.5 mg/kg OD or 1 mg/kg BD.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 enoxaparin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 29,
+          "adjustment": "Reduce to 1 mg/kg OD (treatment) or 20mg OD (prophylaxis). Consider anti-Xa monitoring.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 enoxaparin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "morphine": {
+      "drug_class": "OPIOID",
+      "indication": "Severe pain",
+      "default_dose": "Variable; titrated",
+      "bands": [
+        {
+          "egfr_min": 30,
+          "egfr_max": null,
+          "adjustment": "Use lowest effective dose; standard titration.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 morphine (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 10,
+          "egfr_max": 29,
+          "adjustment": "Reduce dose by 25-50% and/or extend dosing interval. Consider oxycodone or fentanyl as alternatives.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 morphine (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 9,
+          "adjustment": "AVOID \u2014 accumulation of M6G metabolite causes prolonged sedation and respiratory depression. Use oxycodone or fentanyl.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 morphine (renal impairment); palliative-care guidance",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "tramadol": {
+      "drug_class": "OPIOID",
+      "indication": "Moderate pain",
+      "default_dose": "50-100mg every 4-6 hours, max 400mg/day",
+      "bands": [
+        {
+          "egfr_min": 30,
+          "egfr_max": null,
+          "adjustment": "Standard dose; max 400mg daily.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 tramadol (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 10,
+          "egfr_max": 29,
+          "adjustment": "Increase dosing interval to every 12 hours; max 200mg daily.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 tramadol (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 9,
+          "adjustment": "AVOID modified-release; immediate-release only with extended interval and reduced dose under specialist supervision.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 tramadol (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "codeine": {
+      "drug_class": "OPIOID",
+      "indication": "Mild-moderate pain",
+      "default_dose": "30-60mg every 4-6 hours, max 240mg/day",
+      "bands": [
+        {
+          "egfr_min": 30,
+          "egfr_max": null,
+          "adjustment": "Standard 30-60mg q4-6h, max 240mg/day.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 codeine (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 10,
+          "egfr_max": 29,
+          "adjustment": "Reduce dose; extend interval to 6-8 hourly.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 codeine (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 9,
+          "adjustment": "AVOID \u2014 accumulation of active metabolites. Use alternative.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 codeine (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "lithium": {
+      "drug_class": "MOOD_STABILISER",
+      "indication": "Bipolar disorder, recurrent depression",
+      "default_dose": "Titrated to serum level 0.4-1.0 mmol/L (acute mania up to 1.2)",
+      "bands": [
+        {
+          "egfr_min": 60,
+          "egfr_max": null,
+          "adjustment": "Standard titration; check level 7 days after each change, then 3-monthly when stable.",
+          "severity": "info",
+          "citation_source": "NICE CG185; BNF \u2014 lithium",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 30,
+          "egfr_max": 59,
+          "adjustment": "Reduce dose; check serum level more frequently (every 4-6 weeks). Specialist input advised.",
+          "severity": "major",
+          "citation_source": "NICE CG185; BNF \u2014 lithium (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 29,
+          "adjustment": "AVOID or specialist supervision only. Risk of accumulation and toxicity.",
+          "severity": "contraindicated",
+          "citation_source": "NICE CG185; BNF \u2014 lithium (contraindications)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "metoclopramide": {
+      "drug_class": "ANTIEMETIC",
+      "indication": "Nausea, vomiting, gastroparesis",
+      "default_dose": "10mg TDS, max 5 days",
+      "bands": [
+        {
+          "egfr_min": 60,
+          "egfr_max": null,
+          "adjustment": "Standard 10mg TDS for max 5 days.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 metoclopramide (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 15,
+          "egfr_max": 59,
+          "adjustment": "Reduce daily dose by 50%.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 metoclopramide (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 14,
+          "adjustment": "Reduce daily dose by 75%; consider alternative.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 metoclopramide (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "ranitidine": {
+      "drug_class": "H2_ANTAGONIST",
+      "indication": "Dyspepsia, GORD",
+      "default_dose": "150mg BD or 300mg nocte",
+      "bands": [
+        {
+          "egfr_min": 50,
+          "egfr_max": null,
+          "adjustment": "Standard dose.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 ranitidine (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 49,
+          "adjustment": "150mg ON (half normal dose).",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 ranitidine (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ],
+      "_note": "Ranitidine withdrawn from UK market 2020 over NDMA contamination \u2014 included for completeness; consider famotidine."
+    },
+    "ciprofloxacin": {
+      "drug_class": "QUINOLONE",
+      "indication": "UTI, gram-negative infection",
+      "default_dose": "500-750mg BD oral; 400mg BD-TDS IV",
+      "bands": [
+        {
+          "egfr_min": 50,
+          "egfr_max": null,
+          "adjustment": "Standard dose.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 ciprofloxacin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 30,
+          "egfr_max": 49,
+          "adjustment": "Max 750mg BD; consider 250-500mg BD for less severe infection.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 ciprofloxacin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 29,
+          "adjustment": "Max 500mg BD (oral) or 400mg BD (IV).",
+          "severity": "major",
+          "citation_source": "BNF \u2014 ciprofloxacin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "trimethoprim": {
+      "drug_class": "ANTIBIOTIC",
+      "indication": "UTI",
+      "default_dose": "200mg BD",
+      "bands": [
+        {
+          "egfr_min": 30,
+          "egfr_max": null,
+          "adjustment": "Standard 200mg BD x 3 days (uncomplicated UTI).",
+          "severity": "info",
+          "citation_source": "BNF \u2014 trimethoprim (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 15,
+          "egfr_max": 29,
+          "adjustment": "Standard dose for 3 days then halve.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 trimethoprim (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 14,
+          "adjustment": "Halve dose throughout (100mg BD). Beware hyperkalaemia, especially with ACE-I/ARB.",
+          "severity": "major",
+          "citation_source": "BNF \u2014 trimethoprim (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "nitrofurantoin": {
+      "drug_class": "ANTIBIOTIC",
+      "indication": "UTI",
+      "default_dose": "50mg QDS or 100mg BD MR",
+      "bands": [
+        {
+          "egfr_min": 45,
+          "egfr_max": null,
+          "adjustment": "Standard 50mg QDS or 100mg BD MR for 3-7 days.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 nitrofurantoin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 30,
+          "egfr_max": 44,
+          "adjustment": "Use only for uncomplicated lower UTI (3-day course); avoid prophylaxis.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 nitrofurantoin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 29,
+          "adjustment": "AVOID \u2014 risk of treatment failure (insufficient urinary concentration) and peripheral neuropathy.",
+          "severity": "contraindicated",
+          "citation_source": "BNF \u2014 nitrofurantoin (contraindications)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "spironolactone": {
+      "drug_class": "MRA",
+      "indication": "HF, resistant hypertension, ascites, primary aldosteronism",
+      "default_dose": "12.5-50mg OD (HF); up to 200mg (ascites)",
+      "bands": [
+        {
+          "egfr_min": 30,
+          "egfr_max": null,
+          "adjustment": "Standard dose; recheck K+ and U&Es 1 week after starting/titrating.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 spironolactone (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 29,
+          "adjustment": "AVOID \u2014 high hyperkalaemia risk. Specialist supervision only.",
+          "severity": "contraindicated",
+          "citation_source": "BNF \u2014 spironolactone (contraindications); NICE NG203",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "dapagliflozin": {
+      "drug_class": "SGLT2_INHIBITOR",
+      "indication": "T2DM, HFrEF, CKD with proteinuria",
+      "default_dose": "10mg OD",
+      "bands": [
+        {
+          "egfr_min": 25,
+          "egfr_max": null,
+          "adjustment": "Standard 10mg OD; safe to initiate.",
+          "severity": "info",
+          "citation_source": "NICE NG203 \u00a71.3.16; BNF \u2014 dapagliflozin",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 15,
+          "egfr_max": 24,
+          "adjustment": "Continue if already started for HF/CKD renoprotection; do NOT initiate.",
+          "severity": "moderate",
+          "citation_source": "NICE NG203 \u00a71.3.16; BNF \u2014 dapagliflozin",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 14,
+          "adjustment": "AVOID / discontinue.",
+          "severity": "contraindicated",
+          "citation_source": "BNF \u2014 dapagliflozin (contraindications)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    },
+    "sitagliptin": {
+      "drug_class": "DPP4_INHIBITOR",
+      "indication": "T2DM",
+      "default_dose": "100mg OD",
+      "bands": [
+        {
+          "egfr_min": 45,
+          "egfr_max": null,
+          "adjustment": "Standard 100mg OD.",
+          "severity": "info",
+          "citation_source": "BNF \u2014 sitagliptin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 30,
+          "egfr_max": 44,
+          "adjustment": "50mg OD.",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 sitagliptin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        },
+        {
+          "egfr_min": 0,
+          "egfr_max": 29,
+          "adjustment": "25mg OD (or alternate days).",
+          "severity": "moderate",
+          "citation_source": "BNF \u2014 sitagliptin (renal impairment)",
+          "clinical_review_status": "summarised_from_named_source"
+        }
+      ]
+    }
+  },
+  "_clinical_review_note": "Each entry summarises a named clinical source in original wording (fair use). clinical_review_status='summarised_from_named_source' means: source is named, mechanism/severity reflect the source's substance, but verbatim text is NOT reproduced. NICE/MHRA-cited entries may be upgraded to 'verbatim_verified' (those sources are Open Government Licence). BNF/Beers/STOPP-START stay summarised indefinitely (closed-licence sources)."
+}

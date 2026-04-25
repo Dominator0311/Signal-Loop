@@ -1,0 +1,44 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "doc-margaret-nephrology-consult",
+        "status": "current",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11488-4",
+              "display": "Consult note"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/patient-margaret"
+        },
+        "date": "2026-04-26",
+        "author": [
+          {
+            "display": "Dr Anita Patel, Consultant Nephrologist, Royal Free Hospital"
+          }
+        ],
+        "description": "Nephrology consultation - CKD progression assessment",
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "TmVwaHJvbG9neSBDb25zdWx0YXRpb24gTm90ZQpEciBBbml0YSBQYXRlbCwgQ29uc3VsdGFudCBOZXBocm9sb2dpc3QKUm95YWwgRnJlZSBOZXBocm9sb2d5IENsaW5pYwpEYXRlOiAyMDI2LTA0LTI2CgpSZTogTWFyZ2FyZXQgSGVuZGVyc29uIChET0I6IDE1LzAzLzE5NTQpClJlZmVycmVkIGJ5OiBEciBQYXRlbCwgQ2FtZGVuIFByaW1hcnkgQ2FyZQoKQ2xpbmljYWwgUXVlc3Rpb246IFN1c3RhaW5lZCBlR0ZSIGRlY2xpbmUgZnJvbSA1OCB0byA0MiBvdmVyIDMgbW9udGhzIGluIGNvbnRleHQgb2YgQUNFLUkgYW5kIGRpdXJldGljIHVzZS4KCkhpc3Rvcnk6IDcyRiB3aXRoIFQyRE0gKDEwIHllYXJzKSwgSFROICgxNSB5ZWFycyksIG5vdyBDS0QgM2IuIE9uIGxpc2lub3ByaWwgMTBtZyBPRCBhbmQgZnVyb3NlbWlkZSA0MG1nIE9ELiBNZXRmb3JtaW4gcmVwb3J0ZWRseSBzdG9wcGVkIDMgbW9udGhzIGFnbyAoR0kgaW50b2xlcmFuY2UpLiBTaW12YXN0YXRpbiAyMG1nIG5vY3RlLgoKZUdGUiB0cmVuZDogNTggKE5vdiAyMDI1KSDigJIgNTIgKEphbiAyMDI2KSDigJIgNDIgKEFwciAyMDI2KS4gUmF0ZSBvZiBkZWNsaW5lOiB+NCBwb2ludHMvbW9udGguIFRoaXMgaXMgZmFzdGVyIHRoYW4gZXhwZWN0ZWQgZm9yIGRpYWJldGljIG5lcGhyb3BhdGh5IGFsb25lLgoKRXhhbWluYXRpb246IEJQIDE0Mi84NCBpbiBjbGluaWMuIE5vIG9lZGVtYS4gTm8gcmVuYWwgYnJ1aXQuCgpJbnZlc3RpZ2F0aW9uczogVXJpbmUgQUNSOiAxMi4zIG1nL21tb2wgKG1vZGVyYXRlbHkgaW5jcmVhc2VkKS4gUmVuYWwgVVM6IE5vcm1hbCBzaXplZCBraWRuZXlzLCBubyBvYnN0cnVjdGlvbiwgbm8gc3RvbmVzLiBNaWxkIGluY3JlYXNlZCBjb3J0aWNhbCBlY2hvZ2VuaWNpdHkgY29uc2lzdGVudCB3aXRoIENLRC4KCkFzc2Vzc21lbnQ6IENLRCBzdGFnZSAzYiB3aXRoIHJhcGlkIHByb2dyZXNzaW9uLiBMaWtlbHkgbXVsdGlmYWN0b3JpYWw6IGRpYWJldGljIG5lcGhyb3BhdGh5ICsgaGFlbW9keW5hbWljIGVmZmVjdCBvZiBBQ0UtSSArIGRpdXJldGljIGluIHRoZSBjb250ZXh0IG9mIHBvc3NpYmxlIHZvbHVtZSBkZXBsZXRpb24uCgpSZWNvbW1lbmRhdGlvbnM6CjEuIFN0b3AgbGlzaW5vcHJpbC4gVGhlIEFDRS1JIG1heSBiZSBjb250cmlidXRpbmcgdG8gaGFlbW9keW5hbWljIGRlY2xpbmUgaW4gdGhpcyBjb250ZXh0LiBTd2l0Y2ggdG8gaXJiZXNhcnRhbiAxNTBtZyBPRCDigJQgQVJCcyBhcmUgcHJlZmVycmVkIGluIGRpYWJldGljIG5lcGhyb3BhdGh5IHdpdGggcHJvdGVpbnVyaWEgYW5kIG1heSBiZSBiZXR0ZXIgdG9sZXJhdGVkIGhhZW1vZHluYW1pY2FsbHkuCjIuIFJlZHVjZSBmdXJvc2VtaWRlIHRvIDIwbWcgT0QgaWYgQlAgdG9sZXJhdGVzIOKAlCBjb25zaWRlciB2b2x1bWUgZGVwbGV0aW9uIGFzIGEgY29udHJpYnV0b3IuCjMuIFJlY2hlY2sgZUdGUiBhbmQgZWxlY3Ryb2x5dGVzIGF0IDYgd2Vla3MgdG8gY29uZmlybSBzdGFiaWxpc2F0aW9uLgo0LiBBYnNvbHV0ZWx5IG5vIE5TQUlEcyDigJQgbGlmZWxvbmcgYXZvaWRhbmNlIGdpdmVuIENLRCBzdGFnZSBhbmQgcHJpb3IgdHJpcGxlLXdoYW1teSByaXNrIHBhdHRlcm4uCjUuIENvbnNpZGVyIFNHTFQyIGluaGliaXRvciAoZGFwYWdsaWZsb3ppbiAxMG1nKSBmb3IgcmVub3Byb3RlY3Rpb24gb25jZSBlR0ZSIHN0YWJpbGlzZXMgKE5JQ0UgTkcyMDMgwqcxLjMuMTYpLgo2LiBSZXZpZXcgaW4gbXkgY2xpbmljIGluIDMgbW9udGhzIHdpdGggcmVwZWF0IHJlbmFsIGZ1bmN0aW9uIGFuZCBBQ1IuCgpJIGhhdmUgZXhwbGFpbmVkIHRoZSBzaXR1YXRpb24gdG8gTWFyZ2FyZXQgaW4gcGxhaW4gdGVybXMuIFNoZSB1bmRlcnN0YW5kcyB0aGUgaW1wb3J0YW5jZSBvZiBhdm9pZGluZyBhbnRpLWluZmxhbW1hdG9yeSBtZWRpY2F0aW9ucyBhbmQgaXMga2VlbiB0byBwcm9jZWVkIHdpdGggdGhlIG1lZGljYXRpb24gY2hhbmdlcy4KCllvdXJzIHNpbmNlcmVseSwKRHIgQW5pdGEgUGF0ZWwKQ29uc3VsdGFudCBOZXBocm9sb2dpc3Q="
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "DocumentReference/doc-margaret-nephrology-consult"
+      }
+    }
+  ]
+}

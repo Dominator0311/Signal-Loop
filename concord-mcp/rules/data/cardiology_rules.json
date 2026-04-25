@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "source": "NICE NG106 (Chronic heart failure in adults), CG187 (Acute heart failure)",
+    "version": "v1-stub",
+    "note": "Phase 2 will populate with curated NG106 + CG187 rule entries"
+  },
+  "diuresis_rules": [
+    {
+      "rule_id": "cardio-hf-diuresis-escalation",
+      "description": "In acute decompensated HF with fluid overload, consider IV loop diuretic escalation",
+      "citation": "NICE CG187 §1.4.3",
+      "trigger_conditions": ["fluid_overload", "worsening_dyspnoea", "acute_decompensation"],
+      "action_code": "UPTITRATE_LOOP_DIURETIC",
+      "severity": "high"
+    },
+    {
+      "rule_id": "cardio-hf-renal-monitor-on-diuresis",
+      "description": "Monitor renal function and electrolytes within 48h of loop diuretic change",
+      "citation": "NICE NG106 §1.5.5",
+      "trigger_conditions": ["loop_diuretic_change"],
+      "action_code": "REPEAT_RENAL_PANEL_48H",
+      "severity": "medium"
+    }
+  ],
+  "raas_rules": [
+    {
+      "rule_id": "cardio-hf-ace-arb-egfr-caution",
+      "description": "Consider holding ACE-I/ARB if eGFR < 30 or rising creatinine > 30% baseline",
+      "citation": "NICE NG106 §1.5.5",
+      "trigger_conditions": ["egfr_under_30", "creatinine_rise_over_30pct"],
+      "action_code": "HOLD_ACE_ARB_TEMPORARILY",
+      "severity": "high"
+    }
+  ],
+  "sglt2_rules": [
+    {
+      "rule_id": "cardio-hf-sglt2-continue",
+      "description": "Continue SGLT2i in HFrEF unless contraindicated (eGFR < 20)",
+      "citation": "NICE NG106 §1.4.7",
+      "trigger_conditions": ["hf_diagnosis", "egfr_above_20"],
+      "action_code": "CONTINUE_SGLT2",
+      "severity": "medium"
+    }
+  ]
+}

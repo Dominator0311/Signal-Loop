@@ -12,10 +12,10 @@ from typing import Annotated
 from mcp.server.fastmcp import Context
 from pydantic import Field
 
-from llm.client import get_gemini_client
-from llm.prompts.safety_synthesis import SYSTEM_INSTRUCTION as SYNTHESIS_SYSTEM, build_synthesis_prompt
-from llm.prompts.override_analysis import SYSTEM_INSTRUCTION as OVERRIDE_SYSTEM, build_override_analysis_prompt
-from llm.schemas import LLMSafetyResponse, LLMOverrideAnalysis
+from medsafe_core.llm.client import get_gemini_client
+from medsafe_core.llm.prompts.safety_synthesis import SYSTEM_INSTRUCTION as SYNTHESIS_SYSTEM, build_synthesis_prompt
+from medsafe_core.llm.prompts.override_analysis import SYSTEM_INSTRUCTION as OVERRIDE_SYSTEM, build_override_analysis_prompt
+from medsafe_core.llm.schemas import LLMSafetyResponse, LLMOverrideAnalysis
 
 
 async def synthesise_safety_response(

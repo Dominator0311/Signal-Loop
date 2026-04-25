@@ -16,11 +16,8 @@ PyJWT>=2.10.0
 pydantic>=2.7.0
 pydantic-settings>=2.3.0
 
-# Google Gemini SDK for Phase 1 and Phase 3 LLM calls
+# Google Gemini SDK for BuildEpisodeBrief LLM compression
 google-genai>=1.0.0
-
-# PDF text extraction for consult notes uploaded via the patient Documents tab
-pypdf>=5.0.0
 
 # Testing
 pytest>=8.0.0

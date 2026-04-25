@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medsafe_core"
+version = "0.1.0"
+description = "Shared core library for SignalLoop MedSafe MCP and Concord MCP"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28.0",
+    "PyJWT>=2.10.0",
+    "pydantic>=2.7.0",
+    "pydantic-settings>=2.3.0",
+    "google-genai>=1.0.0",
+    "mcp>=1.9.0",
+]
+
+[tool.setuptools.packages.find]
+where = [".."]
+include = ["medsafe_core*"]

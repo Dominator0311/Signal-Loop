@@ -1,0 +1,1013 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "name": [
+          {
+            "use": "official",
+            "family": "Henderson",
+            "given": [
+              "Margaret"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1954-03-15",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "42 Oakwood Lane"
+            ],
+            "city": "Camden",
+            "postalCode": "NW1 8QT",
+            "country": "GB"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ]
+            },
+            "preferred": true
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Patient"
+      },
+      "fullUrl": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "44054006",
+              "display": "Type 2 diabetes mellitus"
+            }
+          ],
+          "text": "Type 2 diabetes mellitus"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "onsetDateTime": "2016-06-01",
+        "note": [
+          {
+            "text": "Diagnosed 10 years ago. Managed with metformin. HbA1c generally well controlled (last 52 mmol/mol)."
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Condition"
+      },
+      "fullUrl": "urn:uuid:aff0a550-530a-5119-8bde-53cc3313243b"
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38341003",
+              "display": "Hypertensive disorder"
+            }
+          ],
+          "text": "Essential hypertension"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "onsetDateTime": "2011-01-01",
+        "note": [
+          {
+            "text": "Managed with lisinopril 10mg and furosemide 40mg. Generally well controlled. Last clinic BP 138/82."
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Condition"
+      },
+      "fullUrl": "urn:uuid:9c7ff37b-aa21-5612-9337-c4ed69eec4ad"
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "731000119105",
+              "display": "Chronic kidney disease stage 3B"
+            }
+          ],
+          "text": "Chronic kidney disease stage 3B"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "onsetDateTime": "2026-04-12",
+        "note": [
+          {
+            "text": "Newly staged based on latest eGFR of 42. Prior eGFR was 58 three months ago. Rapid decline trajectory. No prior nephrology referral."
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Condition"
+      },
+      "fullUrl": "urn:uuid:f40c0c9e-8602-5a4e-9521-8daefe67f02a"
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "239873007",
+              "display": "Osteoarthritis of knee"
+            }
+          ],
+          "text": "Osteoarthritis, bilateral knees"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "onsetDateTime": "2023-09-01",
+        "note": [
+          {
+            "text": "Bilateral knee OA. Worsening over past 6 months. Affecting mobility and sleep. Reason for current visit."
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Condition"
+      },
+      "fullUrl": "urn:uuid:dc1ecc03-cb2c-596f-8d35-e5cfdb634a85"
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://dmd.nhs.uk",
+              "code": "318869007",
+              "display": "Lisinopril 10mg tablets"
+            }
+          ],
+          "text": "Lisinopril 10mg tablets"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "authoredOn": "2020-03-15",
+        "dosageInstruction": [
+          {
+            "text": "Take ONE tablet ONCE daily in the morning",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 10,
+                  "unit": "mg"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "MedicationRequest"
+      },
+      "fullUrl": "urn:uuid:2fc553c2-1f2c-5c8d-b230-539ff66a9257"
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://dmd.nhs.uk",
+              "code": "317971007",
+              "display": "Furosemide 40mg tablets"
+            }
+          ],
+          "text": "Furosemide 40mg tablets"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "authoredOn": "2019-11-20",
+        "dosageInstruction": [
+          {
+            "text": "Take ONE tablet ONCE daily in the morning",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 40,
+                  "unit": "mg"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "MedicationRequest"
+      },
+      "fullUrl": "urn:uuid:c763bc61-c7b6-53c1-b35f-21b6cd9484d6"
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://dmd.nhs.uk",
+              "code": "325278007",
+              "display": "Metformin 500mg tablets"
+            }
+          ],
+          "text": "Metformin 500mg tablets"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "authoredOn": "2016-07-01",
+        "dosageInstruction": [
+          {
+            "text": "Take ONE tablet TWICE daily with meals",
+            "timing": {
+              "repeat": {
+                "frequency": 2,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 500,
+                  "unit": "mg"
+                }
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "Patient reports stopping this 3 months ago due to GI side effects. Chart still shows active. RECONCILIATION CONFLICT."
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "MedicationRequest"
+      },
+      "fullUrl": "urn:uuid:364d42d9-fa3b-50bf-b344-8c0c6de1dfc0"
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://dmd.nhs.uk",
+              "code": "320000009",
+              "display": "Simvastatin 20mg tablets"
+            }
+          ],
+          "text": "Simvastatin 20mg tablets"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "authoredOn": "2017-02-10",
+        "dosageInstruction": [
+          {
+            "text": "Take ONE tablet at NIGHT",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 20,
+                  "unit": "mg"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "MedicationRequest"
+      },
+      "fullUrl": "urn:uuid:675d9d3c-9325-5442-9732-750735c11e82"
+    },
+    {
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "type": "allergy",
+        "category": [
+          "medication"
+        ],
+        "criticality": "low",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "764146007",
+              "display": "Penicillin"
+            }
+          ],
+          "text": "Penicillin"
+        },
+        "patient": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "271807003",
+                    "display": "Skin rash"
+                  }
+                ],
+                "text": "Rash"
+              }
+            ],
+            "severity": "mild"
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "AllergyIntolerance"
+      },
+      "fullUrl": "urn:uuid:037d9002-a460-580c-8766-33118b7f3b3b"
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "62238-1",
+              "display": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (CKD-EPI)"
+            }
+          ],
+          "text": "eGFR (CKD-EPI)"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "effectiveDateTime": "2025-11-14",
+        "valueQuantity": {
+          "value": 58,
+          "unit": "mL/min/1.73m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/{1.73_m2}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ]
+          }
+        ],
+        "referenceRange": [
+          {
+            "low": {
+              "value": 60,
+              "unit": "mL/min/1.73m2"
+            },
+            "text": ">60 mL/min/1.73m2"
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "fullUrl": "urn:uuid:f9fff88c-6385-5c52-a98f-d122d768fac5"
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "62238-1",
+              "display": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (CKD-EPI)"
+            }
+          ],
+          "text": "eGFR (CKD-EPI)"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "effectiveDateTime": "2026-01-20",
+        "valueQuantity": {
+          "value": 52,
+          "unit": "mL/min/1.73m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/{1.73_m2}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "fullUrl": "urn:uuid:34f167c8-a652-598a-9e67-d71d88994fcd"
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "62238-1",
+              "display": "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (CKD-EPI)"
+            }
+          ],
+          "text": "eGFR (CKD-EPI)"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "effectiveDateTime": "2026-04-12",
+        "valueQuantity": {
+          "value": 42,
+          "unit": "mL/min/1.73m2",
+          "system": "http://unitsofmeasure.org",
+          "code": "mL/min/{1.73_m2}"
+        },
+        "interpretation": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "code": "L",
+                "display": "Low"
+              }
+            ]
+          }
+        ],
+        "note": [
+          {
+            "text": "Significant decline from 58 (Nov 2025) to 42 (Apr 2026). Rate of decline approximately 4 points per month. Now meets CKD stage 3B criteria."
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "fullUrl": "urn:uuid:6954858d-2afb-513e-8fb8-1ae61d32d040"
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Serum creatinine"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "effectiveDateTime": "2025-11-14",
+        "valueQuantity": {
+          "value": 95,
+          "unit": "umol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "umol/L"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "fullUrl": "urn:uuid:7c30d4d7-d204-5126-808b-a0e6d9f2a16d"
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Serum creatinine"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "effectiveDateTime": "2026-01-20",
+        "valueQuantity": {
+          "value": 108,
+          "unit": "umol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "umol/L"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "fullUrl": "urn:uuid:a45eb6d0-57b3-55b8-ab5c-b3c1fb6384fb"
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "2160-0",
+              "display": "Creatinine [Mass/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Serum creatinine"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "effectiveDateTime": "2026-04-12",
+        "valueQuantity": {
+          "value": 128,
+          "unit": "umol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "umol/L"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "fullUrl": "urn:uuid:dd61ba1c-eeff-5798-b507-f7135637ffec"
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ],
+          "text": "Blood pressure"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "effectiveDateTime": "2026-04-06",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 138,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 82,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "fullUrl": "urn:uuid:8a3a634a-1b73-5091-aedf-031c94ac5e06"
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "status": "in-progress",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "period": {
+          "start": "2026-04-20T09:00:00Z"
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "239873007",
+                "display": "Osteoarthritis of knee"
+              }
+            ],
+            "text": "Follow-up: bilateral knee pain worsening"
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Encounter"
+      },
+      "fullUrl": "urn:uuid:67100c2a-7032-56cc-904e-c0c157355d47"
+    },
+    {
+      "resource": {
+        "resourceType": "DocumentReference",
+        "status": "current",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "date": "2026-04-06",
+        "description": "Primary care progress note - knee pain follow-up",
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "data": "UHJvZ3Jlc3MgTm90ZSAtIERyIFBhdGVsCkRhdGU6IDIwMjYtMDQtMDYKClByZXNlbnRpbmcgY29tcGxhaW50OiBCaWxhdGVyYWwga25lZSBwYWluLCB3b3JzZW5pbmcgb3ZlciA2IG1vbnRocy4gQWZmZWN0aW5nIG1vYmlsaXR5IGFuZCBzbGVlcC4gUGF0aWVudCByZXBvcnRzIHNoZSBoYXMgc3RvcHBlZCB0YWtpbmcgbWV0Zm9ybWluIGFwcHJveGltYXRlbHkgMyBtb250aHMgYWdvIGR1ZSB0byBHSSBzaWRlIGVmZmVjdHMgKG5hdXNlYSwgZGlhcnJob2VhKS4gQ2hhcnQgc3RpbGwgc2hvd3MgYWN0aXZlLgoKRXhhbWluYXRpb246IEJpbGF0ZXJhbCBrbmVlIGNyZXBpdHVzLCBtaWxkIGVmZnVzaW9uIEwgPiBSLiBSTyBub3JtYWwuIE5vIGluc3RhYmlsaXR5LgoKUGxhbjogUmV2aWV3IGluIDIgd2Vla3MuIENvbnNpZGVyIGFuYWxnZXNpYSBvcHRpb25zLiBOb3RlOiBuZXcgYmxvb2RzIHJlcXVlc3RlZCBpbmNsdWRpbmcgcmVuYWwgZnVuY3Rpb24gZ2l2ZW4gQUNFLUkgdXNlIGFuZCBhZ2Uu"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "DocumentReference"
+      },
+      "fullUrl": "urn:uuid:ac0691ab-6daf-5d3a-9d69-bae9df320003"
+    },
+    {
+      "resource": {
+        "resourceType": "DocumentReference",
+        "status": "current",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11488-4",
+              "display": "Consult note"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:29540f77-fcc0-5da3-b0f1-744e1f3a7cba"
+        },
+        "date": "2026-04-26",
+        "author": [
+          {
+            "display": "Dr Anita Patel, Consultant Nephrologist, Royal Free Hospital"
+          }
+        ],
+        "description": "Nephrology consultation - CKD progression assessment",
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/plain",
+              "title": "margaret-nephrology-consult.txt",
+              "data": "TmVwaHJvbG9neSBDb25zdWx0YXRpb24gTm90ZQpEciBBbml0YSBQYXRlbCwgQ29uc3VsdGFudCBOZXBocm9sb2dpc3QKUm95YWwgRnJlZSBOZXBocm9sb2d5IENsaW5pYwpEYXRlOiAyMDI2LTA0LTI2CgpSZTogTWFyZ2FyZXQgSGVuZGVyc29uIChET0I6IDE1LzAzLzE5NTQpClJlZmVycmVkIGJ5OiBEciBQYXRlbCwgQ2FtZGVuIFByaW1hcnkgQ2FyZQoKQ2xpbmljYWwgUXVlc3Rpb246IFN1c3RhaW5lZCBlR0ZSIGRlY2xpbmUgZnJvbSA1OCB0byA0MiBvdmVyIDUgbW9udGhzIGluIGNvbnRleHQgb2YgQUNFLUkgYW5kIGRpdXJldGljIHVzZS4KCkhpc3Rvcnk6IDcyRiB3aXRoIFQyRE0gKDEwIHllYXJzKSwgSFROICgxNSB5ZWFycyksIG5vdyBDS0QgM2IuIE9uIGxpc2lub3ByaWwgMTBtZyBPRCBhbmQgZnVyb3NlbWlkZSA0MG1nIE9ELiBNZXRmb3JtaW4gcmVwb3J0ZWRseSBzdG9wcGVkIDMgbW9udGhzIGFnbyAoR0kgaW50b2xlcmFuY2UpLiBTaW12YXN0YXRpbiAyMG1nIG5vY3RlLgoKZUdGUiB0cmVuZDogNTggKE5vdiAyMDI1KSAtPiA1MiAoSmFuIDIwMjYpIC0+IDQyIChBcHIgMjAyNikuIFJhdGUgb2YgZGVjbGluZTogfjMgcG9pbnRzL21vbnRoLiBUaGlzIGlzIGZhc3RlciB0aGFuIGV4cGVjdGVkIGZvciBkaWFiZXRpYyBuZXBocm9wYXRoeSBhbG9uZS4KCkV4YW1pbmF0aW9uOiBCUCAxNDIvODQgaW4gY2xpbmljLiBObyBvZWRlbWEuIE5vIHJlbmFsIGJydWl0LgoKSW52ZXN0aWdhdGlvbnM6IFVyaW5lIEFDUjogMTIuMyBtZy9tbW9sIChtb2RlcmF0ZWx5IGluY3JlYXNlZCkuIFJlbmFsIFVTOiBOb3JtYWwgc2l6ZWQga2lkbmV5cywgbm8gb2JzdHJ1Y3Rpb24sIG5vIHN0b25lcy4gTWlsZCBpbmNyZWFzZWQgY29ydGljYWwgZWNob2dlbmljaXR5IGNvbnNpc3RlbnQgd2l0aCBDS0QuCgpBc3Nlc3NtZW50OiBDS0Qgc3RhZ2UgM2Igd2l0aCByYXBpZCBwcm9ncmVzc2lvbi4gTGlrZWx5IG11bHRpZmFjdG9yaWFsOiBkaWFiZXRpYyBuZXBocm9wYXRoeSArIGhhZW1vZHluYW1pYyBlZmZlY3Qgb2YgQUNFLUkgKyBkaXVyZXRpYyBpbiB0aGUgY29udGV4dCBvZiBwb3NzaWJsZSB2b2x1bWUgZGVwbGV0aW9uLgoKUmVjb21tZW5kYXRpb25zOgoxLiBTdG9wIGxpc2lub3ByaWwuIFRoZSBBQ0UtSSBtYXkgYmUgY29udHJpYnV0aW5nIHRvIGhhZW1vZHluYW1pYyBkZWNsaW5lIGluIHRoaXMgY29udGV4dC4gU3dpdGNoIHRvIGlyYmVzYXJ0YW4gMTUwbWcgT0QgLS0gQVJCcyBhcmUgcHJlZmVycmVkIGluIGRpYWJldGljIG5lcGhyb3BhdGh5IHdpdGggcHJvdGVpbnVyaWEgYW5kIG1heSBiZSBiZXR0ZXIgdG9sZXJhdGVkIGhhZW1vZHluYW1pY2FsbHkuCjIuIFJlZHVjZSBmdXJvc2VtaWRlIHRvIDIwbWcgT0QgaWYgQlAgdG9sZXJhdGVzIC0tIGNvbnNpZGVyIHZvbHVtZSBkZXBsZXRpb24gYXMgYSBjb250cmlidXRvci4KMy4gUmVjaGVjayBlR0ZSIGFuZCBlbGVjdHJvbHl0ZXMgYXQgNiB3ZWVrcyB0byBjb25maXJtIHN0YWJpbGlzYXRpb24uCjQuIEFic29sdXRlbHkgbm8gTlNBSURzIC0tIGxpZmVsb25nIGF2b2lkYW5jZSBnaXZlbiBDS0Qgc3RhZ2UgYW5kIHByaW9yIHRyaXBsZS13aGFtbXkgcmlzayBwYXR0ZXJuLgo1LiBDb25zaWRlciBTR0xUMiBpbmhpYml0b3IgKGRhcGFnbGlmbG96aW4gMTBtZykgZm9yIHJlbm9wcm90ZWN0aW9uIG9uY2UgZUdGUiBzdGFiaWxpc2VzIChOSUNFIE5HMjAzIHNlY3Rpb24gMS4zLjE2KS4KNi4gUmV2aWV3IGluIG15IGNsaW5pYyBpbiAzIG1vbnRocyB3aXRoIHJlcGVhdCByZW5hbCBmdW5jdGlvbiBhbmQgQUNSLgoKSSBoYXZlIGV4cGxhaW5lZCB0aGUgc2l0dWF0aW9uIHRvIE1hcmdhcmV0IGluIHBsYWluIHRlcm1zLiBTaGUgdW5kZXJzdGFuZHMgdGhlIGltcG9ydGFuY2Ugb2YgYXZvaWRpbmcgYW50aS1pbmZsYW1tYXRvcnkgbWVkaWNhdGlvbnMgYW5kIGlzIGtlZW4gdG8gcHJvY2VlZCB3aXRoIHRoZSBtZWRpY2F0aW9uIGNoYW5nZXMuCgpZb3VycyBzaW5jZXJlbHksCkRyIEFuaXRhIFBhdGVsCkNvbnN1bHRhbnQgTmVwaHJvbG9naXN0"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "DocumentReference"
+      },
+      "fullUrl": "urn:uuid:451b045e-0199-508e-b0d7-62feb14f73eb"
+    }
+  ]
+}

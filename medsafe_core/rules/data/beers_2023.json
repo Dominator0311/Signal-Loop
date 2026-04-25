@@ -1,0 +1,196 @@
+{
+  "_description": "AGS Beers Criteria 2023 \u2014 top 10 categories of potentially inappropriate medications (PIMs) in adults aged 65+ years. Used by CheckBeersCriteria. Evaluation is class-level and considers patient-specific context flags where the criterion is conditional (e.g. heart failure, dementia).",
+  "_source": "American Geriatrics Society 2023 updated AGS Beers Criteria for Potentially Inappropriate Medication Use in Older Adults. J Am Geriatr Soc. 2023;71(7):2052-2081. doi:10.1111/jgs.18372.",
+  "categories": [
+    {
+      "id": "BEERS-2023-FIRST-GEN-ANTIHISTAMINE",
+      "category": "First-generation antihistamines",
+      "drug_classes": [
+        "ANTIHISTAMINE_FIRST_GEN",
+        "ANTICHOLINERGIC"
+      ],
+      "specific_drugs": [
+        "diphenhydramine",
+        "chlorpheniramine",
+        "hydroxyzine",
+        "promethazine",
+        "doxylamine",
+        "cyproheptadine"
+      ],
+      "rationale": "Highly anticholinergic; clearance reduced with advanced age; tolerance develops when used as hypnotic; risk of confusion, dry mouth, constipation, and other anticholinergic effects or toxicity. Use of diphenhydramine in special situations such as acute treatment of severe allergic reaction may be appropriate.",
+      "recommendation": "Avoid",
+      "quality_of_evidence": "Moderate",
+      "strength_of_recommendation": "Strong",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "BEERS-2023-NSAID",
+      "category": "Non-COX-selective NSAIDs (oral)",
+      "drug_classes": [
+        "NSAID"
+      ],
+      "specific_drugs": [
+        "ibuprofen",
+        "naproxen",
+        "diclofenac",
+        "indometacin",
+        "ketorolac",
+        "meloxicam",
+        "piroxicam"
+      ],
+      "rationale": "Increases risk of gastrointestinal bleeding, peptic ulcer disease, and acute kidney injury in older adults. Risk is dose-dependent; concurrent use with corticosteroids, anticoagulants, or antiplatelets increases risk further.",
+      "recommendation": "Avoid chronic use unless other alternatives are not effective and patient can take a gastroprotective agent (PPI or misoprostol).",
+      "quality_of_evidence": "Moderate",
+      "strength_of_recommendation": "Strong",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "BEERS-2023-BENZODIAZEPINE",
+      "category": "Benzodiazepines",
+      "drug_classes": [
+        "BENZODIAZEPINE"
+      ],
+      "specific_drugs": [
+        "diazepam",
+        "lorazepam",
+        "temazepam",
+        "alprazolam",
+        "clonazepam",
+        "chlordiazepoxide"
+      ],
+      "rationale": "Older adults have increased sensitivity to benzodiazepines and decreased metabolism of long-acting agents; in general, all benzodiazepines increase risk of cognitive impairment, delirium, falls, fractures and motor vehicle crashes in older adults.",
+      "recommendation": "Avoid. Reasonable for use in seizure disorders, REM sleep behaviour disorder, benzodiazepine or alcohol withdrawal, severe generalised anxiety disorder and procedural sedation.",
+      "quality_of_evidence": "Moderate",
+      "strength_of_recommendation": "Strong",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "BEERS-2023-Z-DRUG",
+      "category": "Non-benzodiazepine benzodiazepine receptor agonists ('Z-drugs')",
+      "drug_classes": [
+        "Z_DRUG"
+      ],
+      "specific_drugs": [
+        "zolpidem",
+        "zopiclone",
+        "zaleplon",
+        "eszopiclone"
+      ],
+      "rationale": "Adverse events similar to those of benzodiazepines in older adults (delirium, falls, fractures); minimal improvement in sleep latency and duration.",
+      "recommendation": "Avoid",
+      "quality_of_evidence": "Moderate",
+      "strength_of_recommendation": "Strong",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "BEERS-2023-ANTIPSYCHOTIC",
+      "category": "Antipsychotics (first- and second-generation)",
+      "drug_classes": [
+        "ANTIPSYCHOTIC"
+      ],
+      "specific_drugs": [
+        "haloperidol",
+        "risperidone",
+        "olanzapine",
+        "quetiapine",
+        "aripiprazole"
+      ],
+      "rationale": "Increased risk of cerebrovascular accident (stroke) and greater rate of cognitive decline and mortality in persons with dementia. Avoid use for behavioural problems of dementia or delirium unless nonpharmacological options have failed or are not possible and the older adult is threatening substantial harm to self or others.",
+      "recommendation": "Avoid, except for FDA-approved indications such as schizophrenia, bipolar disorder, or short-term use as antiemetic during chemotherapy.",
+      "quality_of_evidence": "Moderate",
+      "strength_of_recommendation": "Strong",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "BEERS-2023-TCA",
+      "category": "Tertiary tricyclic antidepressants (highly anticholinergic)",
+      "drug_classes": [
+        "TCA"
+      ],
+      "specific_drugs": [
+        "amitriptyline",
+        "doxepin (>6mg/day)",
+        "imipramine",
+        "clomipramine",
+        "trimipramine"
+      ],
+      "rationale": "Highly anticholinergic, sedating and cause orthostatic hypotension; safety profile of low-dose doxepin (<=6mg/day) is comparable to placebo.",
+      "recommendation": "Avoid",
+      "quality_of_evidence": "High",
+      "strength_of_recommendation": "Strong",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "BEERS-2023-MUSCLE-RELAXANT",
+      "category": "Skeletal muscle relaxants",
+      "drug_classes": [
+        "SKELETAL_MUSCLE_RELAXANT"
+      ],
+      "specific_drugs": [
+        "cyclobenzaprine",
+        "carisoprodol",
+        "methocarbamol",
+        "metaxalone",
+        "orphenadrine"
+      ],
+      "rationale": "Most muscle relaxants poorly tolerated by older adults because of anticholinergic adverse effects, sedation and increased risk of fractures; effectiveness at doses tolerated by older adults is questionable.",
+      "recommendation": "Avoid",
+      "quality_of_evidence": "Moderate",
+      "strength_of_recommendation": "Strong",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "BEERS-2023-SULFONYLUREA-LONG",
+      "category": "Long-acting sulfonylureas",
+      "drug_classes": [
+        "SULFONYLUREA"
+      ],
+      "specific_drugs": [
+        "glibenclamide",
+        "glyburide",
+        "chlorpropamide",
+        "glimepiride"
+      ],
+      "rationale": "Higher risk of severe prolonged hypoglycaemia in older adults.",
+      "recommendation": "Avoid (glibenclamide/glyburide, chlorpropamide). Use glimepiride with caution.",
+      "quality_of_evidence": "High",
+      "strength_of_recommendation": "Strong",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "BEERS-2023-PPI-LONG-TERM",
+      "category": "Proton-pump inhibitors (long-term, >8 weeks)",
+      "drug_classes": [
+        "PPI"
+      ],
+      "specific_drugs": [
+        "omeprazole",
+        "lansoprazole",
+        "esomeprazole",
+        "pantoprazole",
+        "rabeprazole"
+      ],
+      "rationale": "Risk of Clostridioides difficile infection, bone loss, fractures and possibly community-acquired pneumonia and dementia. Avoid scheduled use for >8 weeks unless for high-risk patients (e.g. oral corticosteroids or chronic NSAID use), erosive oesophagitis, Barrett's oesophagitis, pathological hypersecretory condition, or demonstrated need for maintenance treatment (e.g. failure of drug discontinuation trial or H2-receptor antagonists).",
+      "recommendation": "Avoid scheduled use for >8 weeks unless documented high-risk indication.",
+      "quality_of_evidence": "High",
+      "strength_of_recommendation": "Strong",
+      "clinical_review_status": "summarised_from_named_source"
+    },
+    {
+      "id": "BEERS-2023-DIGOXIN-FIRST-LINE-AF",
+      "category": "Digoxin (first-line for AF or HF)",
+      "drug_classes": [
+        "CARDIAC_GLYCOSIDE"
+      ],
+      "specific_drugs": [
+        "digoxin"
+      ],
+      "rationale": "Use of digoxin for atrial fibrillation or heart failure with reduced ejection fraction has been associated with increased mortality. Better alternatives exist for both indications. If used, avoid doses >0.125mg/day.",
+      "recommendation": "Avoid as first-line therapy for AF or HF; use lowest effective dose (<=0.125mg/day) if used.",
+      "quality_of_evidence": "Moderate",
+      "strength_of_recommendation": "Strong",
+      "clinical_review_status": "summarised_from_named_source"
+    }
+  ],
+  "_clinical_review_note": "Each entry summarises a named clinical source in original wording (fair use). clinical_review_status='summarised_from_named_source' means: source is named, mechanism/severity reflect the source's substance, but verbatim text is NOT reproduced. NICE/MHRA-cited entries may be upgraded to 'verbatim_verified' (those sources are Open Government Licence). BNF/Beers/STOPP-START stay summarised indefinitely (closed-licence sources)."
+}

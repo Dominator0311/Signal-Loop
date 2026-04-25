@@ -10,15 +10,9 @@ Test cases cover the three demo patients:
   - Doris (should WARN for naproxen)
 """
 
-import sys
-from pathlib import Path
-
-# Add project root to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-from rules.engine import evaluate_medication_safety
-from rules.normalizer import normalize_medication
-from rules.models import (
+from medsafe_core.rules.engine import evaluate_medication_safety
+from medsafe_core.rules.normalizer import normalize_medication
+from medsafe_core.rules.models import (
     PatientRiskProfile,
     RenalFunction,
     MedicationEntry,

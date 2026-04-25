@@ -10,20 +10,101 @@ returning the created resource with its server-assigned ID.
 """
 
 import json
+import logging
+import re
+import traceback
+from datetime import datetime, timedelta, timezone
 from typing import Annotated
 
 from mcp.server.fastmcp import Context
 from pydantic import Field
 
-from fhir.context import extract_fhir_context, extract_patient_id
-from fhir.client import FhirClient
-from fhir.resource_builders import (
+from medsafe_core.fhir.context import extract_fhir_context, extract_patient_id
+from medsafe_core.fhir.client import FhirClient
+from medsafe_core.fhir.resource_builders import (
     build_medication_request,
     build_service_request,
     build_task,
     build_communication,
     build_audit_event,
 )
+
+logger = logging.getLogger(__name__)
+
+
+# --- Internal helpers ---
+
+_TIMING_PATTERN = re.compile(
+    r"(?:in\s+|at\s+|after\s+)?(\d+)\s*(day|days|week|weeks|month|months|year|years)",
+    re.IGNORECASE,
+)
+
+
+def _compute_due_date_from_timing(timing: str | None) -> str | None:
+    """
+    Parse a natural-language timing string and compute an ISO date relative to now.
+
+    Accepts strings like "6 weeks", "3 months", "in 1 week", "at 6 weeks",
+    "2 weeks from now". Returns YYYY-MM-DD or None if unparseable.
+
+    This is deterministic — computed server-side from datetime.now() — so the
+    result never depends on the LLM's (often stale) sense of "today".
+    """
+    if not timing:
+        return None
+    match = _TIMING_PATTERN.search(timing)
+    if not match:
+        return None
+    amount = int(match.group(1))
+    unit = match.group(2).lower()
+
+    now = datetime.now(tz=timezone.utc)
+    if unit.startswith("day"):
+        delta = timedelta(days=amount)
+    elif unit.startswith("week"):
+        delta = timedelta(weeks=amount)
+    elif unit.startswith("month"):
+        # Approximate a month as 30 days (good enough for follow-up scheduling).
+        delta = timedelta(days=amount * 30)
+    elif unit.startswith("year"):
+        delta = timedelta(days=amount * 365)
+    else:
+        return None
+    return (now + delta).strftime("%Y-%m-%d")
+
+
+def _coerce_due_date(due_date: str | None, timing: str | None) -> str | None:
+    """
+    Return a safe due_date for a Task.
+
+    Priority:
+      1. If `timing` is parseable, use it — deterministic, source-of-truth.
+      2. Else if `due_date` is provided and parses AND is in the future, use it.
+      3. Else fall back to `timing` parse (if any) or None.
+
+    Prevents the common failure mode where the LLM fabricates a past date
+    because its training cutoff is older than "today".
+    """
+    computed = _compute_due_date_from_timing(timing)
+    if computed:
+        return computed
+
+    if due_date:
+        try:
+            parsed = datetime.strptime(due_date, "%Y-%m-%d").date()
+        except ValueError:
+            logger.warning(f"Ignoring malformed due_date: {due_date!r}")
+            return None
+        today = datetime.now(tz=timezone.utc).date()
+        if parsed < today:
+            logger.warning(
+                f"LLM provided past due_date ({due_date}); coercing to None. "
+                f"Agent should pass a `timing` string instead."
+            )
+            return None
+        return due_date
+
+    return None
 
 
 async def draft_medication_request(
@@ -87,29 +168,66 @@ async def draft_service_request(
 
 
 async def draft_followup_task(
-    description: Annotated[str, Field(description="Task description (e.g., 'Repeat eGFR in 2 weeks')")],
-    due_date: Annotated[str | None, Field(description="Due date in ISO format (e.g., '2026-05-04')")] = None,
-    priority: Annotated[str, Field(description="Priority: routine, urgent, asap, stat")] = "routine",
+    description: Annotated[
+        str,
+        Field(description="Task description (e.g., 'Repeat eGFR and electrolytes')"),
+    ],
+    timing: Annotated[
+        str | None,
+        Field(
+            description=(
+                "PREFERRED way to schedule the task. Pass a natural-language "
+                "interval like '6 weeks', '3 months', '1 week'. The tool computes "
+                "the actual due date from today. Use this instead of due_date — "
+                "the LLM's sense of 'today' is often wrong."
+            )
+        ),
+    ] = None,
+    due_date: Annotated[
+        str | None,
+        Field(
+            description=(
+                "FALLBACK only. Explicit due date in ISO format (YYYY-MM-DD). "
+                "Prefer `timing` for relative scheduling. Past dates are rejected."
+            )
+        ),
+    ] = None,
+    priority: Annotated[
+        str, Field(description="Priority: routine, urgent, asap, stat")
+    ] = "routine",
     ctx: Context = None,
 ) -> str:
     """
     Create a FHIR Task for follow-up work (e.g., repeat labs, monitoring).
+
+    Due-date handling is deterministic: pass a `timing` string ('6 weeks',
+    '3 months', etc.) and the tool computes the actual date from today. An
+    explicit `due_date` is accepted as a fallback but past dates are ignored.
     """
     fhir_ctx = extract_fhir_context(ctx)
     patient_id = extract_patient_id(ctx)
     fhir = FhirClient(fhir_ctx)
 
-    resource = build_task(patient_id, description, due_date, priority)
+    resolved_due_date = _coerce_due_date(due_date, timing)
+
+    resource = build_task(patient_id, description, resolved_due_date, priority)
     created = await fhir.create("Task", resource)
 
-    return json.dumps({
-        "status": "created",
-        "resource_type": "Task",
-        "id": created.get("id"),
-        "description": description,
-        "due_date": due_date,
-        "message": f"Task created: '{description}'. Resource ID: {created.get('id')}",
-    }, indent=2)
+    return json.dumps(
+        {
+            "status": "created",
+            "resource_type": "Task",
+            "id": created.get("id"),
+            "description": description,
+            "due_date": resolved_due_date,
+            "timing_input": timing,
+            "message": (
+                f"Task created: '{description}'. Resource ID: {created.get('id')}"
+                + (f" (due {resolved_due_date})" if resolved_due_date else "")
+            ),
+        },
+        indent=2,
+    )
 
 
 async def log_override(
@@ -123,30 +241,47 @@ async def log_override(
 
     Creates an audit trail when a clinician overrides a safety alert.
     Incorporates the structured analysis from analyse_override_reason.
-    This record is permanent and queryable.
+    This record is permanent and queryable via AuditEvent.
     """
-    fhir_ctx = extract_fhir_context(ctx)
-    patient_id = extract_patient_id(ctx)
-    fhir = FhirClient(fhir_ctx)
+    try:
+        fhir_ctx = extract_fhir_context(ctx)
+        patient_id = extract_patient_id(ctx)
+        fhir = FhirClient(fhir_ctx)
 
-    analysis = json.loads(override_analysis_json)
-    verdict = json.loads(original_verdict_json)
+        # Parse inputs defensively — the agent may occasionally pass malformed JSON
+        try:
+            analysis = json.loads(override_analysis_json) if override_analysis_json else {}
+        except json.JSONDecodeError:
+            analysis = {"raw_analysis": override_analysis_json}
+        try:
+            verdict = json.loads(original_verdict_json) if original_verdict_json else {}
+        except json.JSONDecodeError:
+            verdict = {"raw_verdict": original_verdict_json}
 
-    description = (
-        f"MedSafe override: {verdict.get('proposed_medication', 'unknown medication')}. "
-        f"Original verdict: {verdict.get('verdict', 'unknown')}. "
-        f"Classification: {analysis.get('override_classification', 'unclassified')}. "
-        f"Justification: {analysis.get('structured_audit_justification', override_reason)}. "
-        f"Monitoring: {'; '.join(analysis.get('suggested_monitoring', []))}."
-    )
+        description = (
+            f"MedSafe override: {verdict.get('proposed_medication', 'unknown medication')}. "
+            f"Original verdict: {verdict.get('verdict', 'unknown')}. "
+            f"Classification: {analysis.get('override_classification', 'unclassified')}. "
+            f"Justification: {analysis.get('structured_audit_justification', override_reason)}. "
+            f"Monitoring: {'; '.join(analysis.get('suggested_monitoring', []))}."
+        )
 
-    resource = build_audit_event(patient_id, action="E", description=description)
-    created = await fhir.create("AuditEvent", resource)
+        resource = build_audit_event(patient_id, action="E", description=description)
+        created = await fhir.create("AuditEvent", resource)
 
-    return json.dumps({
-        "status": "created",
-        "resource_type": "AuditEvent",
-        "id": created.get("id"),
-        "override_logged": True,
-        "message": f"Override permanently logged as AuditEvent/{created.get('id')}",
-    }, indent=2)
+        return json.dumps({
+            "status": "created",
+            "resource_type": "AuditEvent",
+            "id": created.get("id"),
+            "override_logged": True,
+            "message": f"Override permanently logged as AuditEvent/{created.get('id')}",
+        }, indent=2)
+
+    except Exception as e:
+        logger.error(f"log_override failed: {e}\n{traceback.format_exc()}")
+        return json.dumps({
+            "error": "override_log_failed",
+            "error_type": type(e).__name__,
+            "message": str(e),
+            "hint": "Check server logs for full traceback. Governance record was NOT persisted.",
+        }, indent=2)

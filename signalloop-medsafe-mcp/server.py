@@ -13,7 +13,11 @@ clear descriptions that tell the LLM agent WHEN to call each tool.
 from mcp.server.fastmcp import FastMCP
 
 # Import all tool functions
-from tools.phase1 import build_patient_risk_profile, get_renal_trend, get_relevant_context
+from tools.phase1 import (
+    build_patient_risk_profile,
+    get_renal_trend,
+    get_relevant_context,
+)
 from tools.phase2 import normalize_medication, check_medication_safety
 from tools.phase3 import synthesise_safety_response, analyse_override_reason
 from tools.referral import (
@@ -28,6 +32,15 @@ from tools.writes import (
     draft_followup_task,
     log_override,
 )
+from tools.renal_dose import check_renal_dose_adjustment
+from tools.stopp_start import check_stopp_start
+from tools.beers import check_beers_criteria
+from tools.ddi import check_drug_drug_interaction
+from tools.suggest_alternative import suggest_alternative
+from tools.explain_contra import explain_contraindication
+from tools.full_review import run_full_medication_review
+from tools.surveillance import surface_patient_attention
+from tools.audit_query import query_audit_event
 
 
 # Create MCP server
@@ -156,8 +169,11 @@ mcp.tool(
 mcp.tool(
     name="DraftFollowupTask",
     description=(
-        "Create a FHIR Task for follow-up work (e.g., 'Repeat eGFR in 2 weeks'). "
-        "Use for monitoring tasks, lab rechecks, and appointment reminders."
+        "Create a FHIR Task for follow-up work (e.g., 'Repeat eGFR'). "
+        "Use for monitoring tasks, lab rechecks, and appointment reminders. "
+        "IMPORTANT: to schedule, pass a `timing` string like '6 weeks' or "
+        "'3 months' — the tool computes the real date from today. Do NOT pass "
+        "due_date unless you're sure it's a future date."
     ),
 )(draft_followup_task)
 
@@ -205,3 +221,111 @@ mcp.tool(
         "recommendations conflict with ongoing management."
     ),
 )(detect_plan_conflicts)
+
+# UK Safe-Prescribing Foundation: deterministic clinical-rule tools (no LLM).
+mcp.tool(
+    name="CheckRenalDoseAdjustment",
+    description=(
+        "Look up the BNF-renally-adjusted dose for a drug at the patient's eGFR. "
+        "Pure JSON lookup, no LLM. Covers ~25 commonly renally-adjusted UK "
+        "medications (metformin, gabapentin, atenolol, digoxin, allopurinol, "
+        "ramipril, lisinopril, gentamicin, vancomycin, dabigatran, apixaban, "
+        "rivaroxaban, edoxaban, enoxaparin, morphine, tramadol, codeine, "
+        "lithium, metoclopramide, ranitidine, ciprofloxacin, trimethoprim, "
+        "nitrofurantoin, spironolactone, dapagliflozin, sitagliptin, pregabalin). "
+        "Returns the applicable eGFR band, adjustment text, severity and BNF citation."
+    ),
+)(check_renal_dose_adjustment)
+
+mcp.tool(
+    name="CheckSTOPPSTART",
+    description=(
+        "Apply STOPP/START v2 criteria (O'Mahony et al., Age and Ageing 2015) to "
+        "a patient aged 65+. Returns potentially inappropriate prescriptions "
+        "(STOPP) and potential prescribing omissions (START) with verbatim "
+        "criterion text and citation. Pass the patient risk profile JSON from "
+        "BuildPatientRiskProfile."
+    ),
+)(check_stopp_start)
+
+mcp.tool(
+    name="CheckBeersCriteria",
+    description=(
+        "Screen the patient's active medications against AGS Beers Criteria 2023 "
+        "(JAGS 2023;71(7):2052-2081). For adults aged 65+. Returns potentially "
+        "inappropriate medications across the top 10 categories (anticholinergics, "
+        "benzodiazepines, NSAIDs, antipsychotics, TCAs, sulfonylureas, PPIs, "
+        "muscle relaxants, Z-drugs, digoxin) with rationale and recommendation."
+    ),
+)(check_beers_criteria)
+
+mcp.tool(
+    name="CheckDrugDrugInteraction",
+    description=(
+        "Pairwise drug-drug interaction screen against the curated BNF Appendix 1 "
+        "subset (~50 high-clinical-significance interactions). Pass a JSON array "
+        "of medication names. Returns interactions with severity (severe/moderate/"
+        "mild), mechanism, recommended action and BNF citation. Use to screen a "
+        "current med list, or to check a proposed new drug against current meds."
+    ),
+)(check_drug_drug_interaction)
+
+# Decision-support LLM tools (Phase-3 style: reason FROM verdicts, not against them).
+mcp.tool(
+    name="SuggestAlternative",
+    description=(
+        "Given a contraindicated medication and the reason it was flagged unsafe, "
+        "suggest 3-5 safer alternatives. LLM-driven structured output: each "
+        "alternative includes drug class, rationale specific to this patient, "
+        "BNF starting dose, monitoring plan and residual cautions. Use after "
+        "CheckMedicationSafety returns BLOCK or WARN_OVERRIDE_REQUIRED."
+    ),
+)(suggest_alternative)
+
+mcp.tool(
+    name="ExplainContraindication",
+    description=(
+        "Translate a SafetyVerdict into paired clinical + patient-friendly "
+        "explanations. LLM-driven. Returns: clinical_explanation (3-5 sentences "
+        "for the prescriber), patient_friendly_explanation (plain English, <30s "
+        "read), key_risks and next_steps. Never softens or contradicts the "
+        "deterministic verdict — only rephrases."
+    ),
+)(explain_contraindication)
+
+mcp.tool(
+    name="RunFullMedicationReview",
+    description=(
+        "Composite end-to-end medication review for the current patient. "
+        "Builds the risk profile, runs deterministic safety checks on every "
+        "active medication, screens for drug-drug interactions, and applies "
+        "STOPP/START + Beers where age applicable. Returns a compact markdown "
+        "report (<5KB) ranked by severity. Use as the entry-point tool for a "
+        "comprehensive prescribing review."
+    ),
+)(run_full_medication_review)
+
+mcp.tool(
+    name="SurfacePatientAttention",
+    description=(
+        "Surface what needs the clinician's attention for the active patient. "
+        "Composite tool: runs the patient profile, renal trend, full medication "
+        "review, and consult discovery in parallel, returns a deterministically "
+        "ranked list of 1-5 attention items with clinical reasoning and citations. "
+        "Use when the clinician asks an open-ended question like "
+        "'what needs my attention?' or 'brief me on this patient' with no "
+        "specific drug or task in scope."
+    ),
+)(surface_patient_attention)
+
+mcp.tool(
+    name="QueryAuditEvent",
+    description=(
+        "READ-ONLY query of FHIR AuditEvents for the active patient. Returns "
+        "chronologically-sorted (newest first) audit events optionally filtered "
+        "by date range or medication-name substring. Use to replay clinical "
+        "decisions (e.g. 'why did we override the eGFR block on naproxen for "
+        "this patient last month?'), compliance review, or handover briefings. "
+        "Counterpart to LogOverride which writes audit events."
+    ),
+)(query_audit_event)

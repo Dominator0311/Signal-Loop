@@ -6,14 +6,18 @@ Every verdict traces to a specific rule with a specific evidence source.
 """
 
 import json
+import logging
+import traceback
 from typing import Annotated
 
 from mcp.server.fastmcp import Context
 from pydantic import Field
 
-from rules.engine import evaluate_medication_safety
-from rules.normalizer import normalize_medication as _normalize
-from rules.models import PatientRiskProfile, MedicationEntry, AllergyEntry, RenalFunction
+from medsafe_core.rules.engine import evaluate_medication_safety
+from medsafe_core.rules.normalizer import normalize_medication as _normalize
+from medsafe_core.rules.models import PatientRiskProfile, MedicationEntry, AllergyEntry, RenalFunction
+
+logger = logging.getLogger(__name__)
 
 
 async def normalize_medication(
@@ -73,42 +77,78 @@ async def check_medication_safety(
     Every flag includes: rule_id, severity, evidence_level, citation,
     and profile_fields_consulted (for audit trail).
     """
-    # Normalize the proposed medication
-    normalized = _normalize(proposed_medication)
+    logger.info(f"check_medication_safety called: proposed={proposed_medication!r}")
+    logger.info(f"profile_json length={len(patient_risk_profile_json) if patient_risk_profile_json else 0}")
+    logger.info(f"profile_json preview={patient_risk_profile_json[:500] if patient_risk_profile_json else 'EMPTY'}")
 
-    if not normalized.resolved:
+    try:
+        # Normalize the proposed medication
+        normalized = _normalize(proposed_medication)
+        logger.info(f"Normalized to: {normalized.canonical_name} (classes={normalized.drug_classes})")
+
+        if not normalized.resolved:
+            return json.dumps({
+                "error": "medication_not_resolved",
+                "message": f"Could not resolve '{proposed_medication}' to a known medication code.",
+                "candidates": list(normalized.candidates),
+                "action": "Please clarify the medication name or provide a more specific description.",
+            }, indent=2)
+
+        # Parse the patient risk profile
+        profile = _parse_risk_profile(patient_risk_profile_json)
+        logger.info(f"Parsed profile: age={profile.age}, egfr={profile.renal_function.latest_egfr}, "
+                    f"meds={len(profile.active_medications)}, allergies={len(profile.allergies)}")
+
+        # Run the deterministic rules engine
+        verdict = evaluate_medication_safety(
+            proposed_drug_classes=list(normalized.drug_classes),
+            proposed_drug_name=normalized.canonical_name or proposed_medication,
+            proposed_drug_code=normalized.code,
+            profile=profile,
+        )
+        logger.info(f"Verdict: {verdict.verdict} with {len(verdict.flags)} flags")
+
+        return json.dumps(verdict.model_dump(), indent=2)
+
+    except Exception as e:
+        error_trace = traceback.format_exc()
+        logger.error(f"check_medication_safety failed: {e}\n{error_trace}")
         return json.dumps({
-            "error": "medication_not_resolved",
-            "message": f"Could not resolve '{proposed_medication}' to a known medication code.",
-            "candidates": list(normalized.candidates),
-            "action": "Please clarify the medication name or provide a more specific description.",
+            "error": "tool_execution_failed",
+            "error_type": type(e).__name__,
+            "message": str(e),
+            "hint": "Check that patient_risk_profile_json is a valid JSON string from BuildPatientRiskProfile.",
         }, indent=2)
 
-    # Parse the patient risk profile
-    profile = _parse_risk_profile(patient_risk_profile_json)
 
-    # Run the deterministic rules engine
-    verdict = evaluate_medication_safety(
-        proposed_drug_classes=list(normalized.drug_classes),
-        proposed_drug_name=normalized.canonical_name or proposed_medication,
-        proposed_drug_code=normalized.code,
-        profile=profile,
-    )
-
-    return json.dumps(verdict.model_dump(), indent=2)
-
-
-def _parse_risk_profile(profile_json: str) -> PatientRiskProfile:
+def parse_risk_profile(profile_json: str) -> PatientRiskProfile:
     """
     Parse a patient risk profile from JSON string.
 
     Handles both the LLM-generated profile format and manually constructed profiles.
     Maps the LLM output schema to the rules engine input schema.
+
+    Raises ValueError with clear messages if:
+      - Input is not valid JSON
+      - Input is an error response from BuildPatientRiskProfile (upstream failure)
     """
     try:
         data = json.loads(profile_json)
     except json.JSONDecodeError as e:
+        # Detect if this is an error message from upstream (Phase 1 failure)
+        if profile_json and "Error executing tool" in profile_json[:200]:
+            raise ValueError(
+                "BuildPatientRiskProfile failed upstream — cannot check safety without a valid profile. "
+                "Re-run BuildPatientRiskProfile first, or provide a valid profile JSON directly."
+            )
         raise ValueError(f"Invalid patient risk profile JSON: {e}")
+
+    # Detect structured error JSON from Phase 1
+    if isinstance(data, dict) and data.get("error"):
+        raise ValueError(
+            f"BuildPatientRiskProfile returned an error: {data.get('message', 'unknown error')}. "
+            f"Cannot check medication safety without a valid profile."
+        )
 
     # Map medications
     medications = []

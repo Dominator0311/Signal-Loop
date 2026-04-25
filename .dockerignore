@@ -1,0 +1,18 @@
+# Exclude large directories not needed for build
+concord-mcp/venv/
+concord-mcp/__pycache__/
+concord-mcp/**/__pycache__/
+concord-mcp/**/*.pyc
+concord-mcp/.pytest_cache/
+concord-mcp/*.egg-info/
+
+medsafe_core/__pycache__/
+medsafe_core/**/__pycache__/
+medsafe_core/**/*.pyc
+medsafe_core/*.egg-info/
+
+signalloop-medsafe-mcp/
+medsafe-rules/
+fhir-bundles/
+medsafe_core.egg-info/
+agent-config/

@@ -1,0 +1,388 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "name": [
+          {
+            "use": "official",
+            "family": "Doyle",
+            "given": [
+              "Frances"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1950-09-03",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "1 Example Street"
+            ],
+            "city": "Leeds",
+            "postalCode": "LS1 3AR",
+            "country": "GB"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en",
+                  "display": "English"
+                }
+              ]
+            },
+            "preferred": true
+          }
+        ],
+        "text": {
+          "status": "generated",
+          "div": "<div>Frances Doyle — 75F. HTN + suspected HF (NYHA II symptoms) + OA. Sparse record — Concord insufficient-data demo.</div>"
+        }
+      },
+      "request": {
+        "method": "POST",
+        "url": "Patient"
+      },
+      "fullUrl": "urn:uuid:70668667-6353-4c2d-9c8f-01bbc558eb14"
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38341003",
+              "display": "Hypertensive disorder"
+            }
+          ],
+          "text": "Essential hypertension"
+        },
+        "subject": {
+          "reference": "urn:uuid:70668667-6353-4c2d-9c8f-01bbc558eb14"
+        },
+        "onsetDateTime": "2008-06-01",
+        "note": [
+          {
+            "text": "Long-standing essential hypertension on amlodipine monotherapy."
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Condition"
+      },
+      "fullUrl": "urn:uuid:d374110b-eb8b-4a24-9a3b-df61015625c6"
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "provisional",
+              "display": "Provisional"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "84114007",
+              "display": "Heart failure"
+            }
+          ],
+          "text": "Suspected heart failure (clinical, unconfirmed)"
+        },
+        "subject": {
+          "reference": "urn:uuid:70668667-6353-4c2d-9c8f-01bbc558eb14"
+        },
+        "onsetDateTime": "2026-03-15",
+        "note": [
+          {
+            "text": "GP encounter Mar-2026: 4-week history of breathlessness on moderate exertion (NYHA II), mild ankle swelling, occasional orthopnoea. No prior echo. No BNP/NT-proBNP on file. Working diagnosis only — needs echo + BNP to confirm."
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Condition"
+      },
+      "fullUrl": "urn:uuid:f9c46cc8-7365-4d8b-81cb-ba2f75031028"
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "239873007",
+              "display": "Osteoarthritis"
+            }
+          ],
+          "text": "Osteoarthritis (knees, bilateral)"
+        },
+        "subject": {
+          "reference": "urn:uuid:70668667-6353-4c2d-9c8f-01bbc558eb14"
+        },
+        "onsetDateTime": "2018-02-01",
+        "note": [
+          {
+            "text": "Chronic bilateral knee OA, managed conservatively. PRN paracetamol; no NSAIDs (avoided due to age + suspected HF)."
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Condition"
+      },
+      "fullUrl": "urn:uuid:b95dd013-76ce-4fed-8aa0-348860215f0a"
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://dmd.nhs.uk",
+              "code": "318720007",
+              "display": "Amlodipine 10mg tablets"
+            }
+          ],
+          "text": "Amlodipine 10mg tablets"
+        },
+        "subject": {
+          "reference": "urn:uuid:70668667-6353-4c2d-9c8f-01bbc558eb14"
+        },
+        "authoredOn": "2010-06-01",
+        "dosageInstruction": [
+          {
+            "text": "Take ONE tablet ONCE daily",
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 10,
+                  "unit": "mg"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "MedicationRequest"
+      },
+      "fullUrl": "urn:uuid:e5a52cf5-62bc-43ed-acdd-ed745614f7b1"
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "185349003",
+                "display": "Encounter for check up"
+              }
+            ],
+            "text": "GP review — breathlessness"
+          }
+        ],
+        "subject": {
+          "reference": "urn:uuid:70668667-6353-4c2d-9c8f-01bbc558eb14"
+        },
+        "period": {
+          "start": "2026-03-15T10:00:00Z",
+          "end": "2026-03-15T10:25:00Z"
+        },
+        "reasonCode": [
+          {
+            "text": "Breathlessness on exertion, ankle swelling — query heart failure"
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Encounter"
+      },
+      "fullUrl": "urn:uuid:080e979f-df73-41c4-92b2-f923a2cb8ba1"
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel"
+            }
+          ],
+          "text": "Blood pressure"
+        },
+        "subject": {
+          "reference": "urn:uuid:70668667-6353-4c2d-9c8f-01bbc558eb14"
+        },
+        "effectiveDateTime": "2026-03-15",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 142,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 84,
+              "unit": "mmHg",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      },
+      "fullUrl": "urn:uuid:09ebc1c0-ac48-4df0-875c-dffb61203b9f"
+    }
+  ]
+}

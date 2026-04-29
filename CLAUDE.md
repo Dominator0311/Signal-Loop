@@ -59,7 +59,6 @@ signalloop-medsafe-mcp/     ← MCP server (Submission A)
 └── tests/                   ← Unit tests (rules engine focus)
 
 fhir-bundles/                ← Patient data for upload
-medsafe-rules/               ← Source rule data (copied into project)
 ```
 
 ## Demo Patients

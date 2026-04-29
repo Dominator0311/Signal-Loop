@@ -1,6 +1,6 @@
 # SignalLoop — Healthcare AI Safety Platform
 
-A medication safety platform built for the **Agents Assemble — Healthcare AI Endgame** hackathon (May 2026). Three MCP servers that bring deterministic clinical safety rules to AI prescribing workflows on the [Prompt Opinion](https://promptopinion.com) platform.
+Three MCP servers that bring deterministic clinical safety rules to AI prescribing workflows on the [Prompt Opinion](https://promptopinion.com) platform.
 
 ---
 
@@ -49,14 +49,14 @@ The LLM **never** makes safety verdicts. The rules engine does. LLM contextualis
 
 ```
 Med/
-├── signalloop-medsafe-mcp/     # MedSafe MCP Server (Submission A)
+├── signalloop-medsafe-mcp/     # MedSafe MCP Server
 │   ├── main.py                 # FastAPI + uvicorn entry point
 │   ├── server.py               # MCP instance and tool registration
 │   ├── tools/                  # MCP tool implementations (thin wrappers)
 │   ├── tests/                  # 9 pytest test files
 │   └── requirements.txt
 │
-├── concord-mcp/                # Concord MCP Server (Submission B)
+├── concord-mcp/                # Concord MCP Server
 │   ├── main.py
 │   ├── server.py
 │   ├── rules/                  # Conflict matrix, action codes, plan validator

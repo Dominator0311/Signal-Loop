@@ -38,7 +38,9 @@ ENV/
 Thumbs.db
 
 # --- Claude / Agent tools ---
-.claude/settings.local.json
+.claude/
+CLAUDE.md
+AGENTS.md
 
 # --- Logs ---
 *.log
